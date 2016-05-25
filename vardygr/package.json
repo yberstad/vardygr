@@ -7,7 +7,19 @@
     "deploy": "react-native bundle --entry-file ./index.ios.js --platform ios --bundle-output ios/main.jsbundle && fastlane beta"
   },
   "dependencies": {
-    "react": "^15.0.2",
-    "react-native": "^0.26.0"
+    "ejson": "^2.1.2",
+    "hash.js": "^1.0.3",
+    "lodash": "^4.13.1",
+    "node-ddp-client": "^1.0.1",
+    "react": "^0.14.8",
+    "react-native": "^0.24.1",
+    "react-native-background-geolocation": "^1.0.1",
+    "react-native-maps": "^0.4.2",
+    "react-native-router-flux": "^3.26.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-immutablejs": "0.0.8",
+    "redux-logger": "^2.6.1",
+    "redux-saga": "^0.10.4"
   }
 }

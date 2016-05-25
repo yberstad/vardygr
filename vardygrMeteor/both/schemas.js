@@ -33,6 +33,12 @@ Events.schema = new SimpleSchema({
     "participants.$.accepted": {
         type: Boolean
     },
+    "participants.$.isCoHost": {
+        type: Boolean
+    },
+    "participants.$.canInviteFriends": {
+        type: Boolean
+    },
     startTime: {
         type: Date
     },
