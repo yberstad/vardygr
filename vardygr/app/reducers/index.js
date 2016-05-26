@@ -1,6 +1,11 @@
 import {combineReducers } from 'redux-immutablejs';
-import activeScene from './activeScene';
+import app from './app';
+import routes from './routes'
+import currentUser from './currentUser';
+
 
 export default combineReducers({
-    activeScene,
+    app,
+    routes,
+    currentUser
 });

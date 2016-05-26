@@ -14,7 +14,7 @@ export default class HomeContainer extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        signedIn: state.get('activeScene').signedIn
+        signedIn: state.get('currentUser').signedIn
     }
 }
 

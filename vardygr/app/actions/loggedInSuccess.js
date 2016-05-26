@@ -1,5 +1,6 @@
 import { LOGGED_IN_SUCCESS } from '../constants/actions';
 
-export default() => ({
-    type: LOGGED_IN_SUCCESS
+export default(user) => ({
+    type: LOGGED_IN_SUCCESS,
+    user
 });
