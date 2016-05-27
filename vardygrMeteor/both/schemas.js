@@ -36,14 +36,20 @@ Events.schema = new SimpleSchema({
     "participants.$.isCoHost": {
         type: Boolean
     },
-    "participants.$.canInviteFriends": {
+    coHosts: {
+        type: [Object]
+    },
+    "coHosts.$.userId": {
+        type: String
+    },    
+    canInviteFriends: {
         type: Boolean
     },
     startTime: {
         type: Date
     },
     schedule: {
-        type: [String]
+        type: String
     },
     displayPositionOfCreator: {
         type: Boolean
@@ -53,9 +59,6 @@ Events.schema = new SimpleSchema({
     },
     region:{
         type: Object
-    },
-    'region.zoomToShowAllUsers': {
-        type: Boolean
     },
     'region.longitudeDelta': {
         type: Number,
