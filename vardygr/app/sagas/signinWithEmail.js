@@ -1,6 +1,6 @@
 import ddpClient from '../ddp';
-import { SIGN_IN_EMAIL } from '../constants/actions';
-import { call, put } from 'redux-saga/effects';
+import { SIGNIN_EMAIL } from '../constants/actions';
+import { call, put, csp } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import signInEmailFailure from '../actions/signInEmailFailure';
 import loggedInSuccess from '../actions/loggedInSuccess';
@@ -11,11 +11,14 @@ function* signInWithEmail(action) {
     try {
         let params = {
             user: {
-                email: trimString(action.payload.email)
+                email: trimString(action.email)
             },
-            password: ddpClient.sha256(action.payload.password)
+            password: ddpClient.sha256(action.password)
         };
+
         const user = yield call(ddpClient.callPromise, 'login', [params]);
+        yield call(ddpClient.persistUser, user);
+
         yield put(loggedInSuccess(user));
     }
     catch(err)
@@ -25,5 +28,5 @@ function* signInWithEmail(action) {
 }
 
 export function* watchSignInWithEmail() {
-    yield* takeLatest(SIGN_IN_EMAIL, signInWithEmail);
+    yield* takeLatest(SIGNIN_EMAIL, signInWithEmail);
 }

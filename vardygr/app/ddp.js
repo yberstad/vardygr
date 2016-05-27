@@ -79,6 +79,22 @@ ddpClient.loginWithUsername = (username, password, cb) => {
   });
 };
 
+ddpClient.persistUser = (user) => {
+    return new Promise((resolve, reject) =>
+    {
+        if (user) {
+            let {id, token, tokenExpires} = user;
+
+            AsyncStorage.setItem('userId', id.toString());
+            AsyncStorage.setItem('loginToken', token.toString());
+            AsyncStorage.setItem('loginTokenExpires', tokenExpires.toString());
+        } else {
+            AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']);
+        }
+        resolve();
+    });
+};
+
 ddpClient.onAuthResponse = (err, res) => {
   if (res) {
     let { id, token, tokenExpires } = res;

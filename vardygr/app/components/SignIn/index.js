@@ -39,7 +39,7 @@ export default class SignIn extends Component {
 
     handleCreateAccount() {
         if (this.validInput()) {
-
+            this.props.signUpEmail(this.state.email, this.state.password);
         }
     }
 

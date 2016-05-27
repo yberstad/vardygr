@@ -1,7 +1,7 @@
-import { EVENT_SAVE } from '../constants/actions'
+import { EVENT_CREATE } from '../constants/actions';
+import { Action } from 'react-native-router-flux';
 
 var initialState  = {
-    id: '',
     title: '',
     description: '',
     location: {
@@ -22,9 +22,10 @@ var initialState  = {
 };
 
 export default (state = initialState, action) => {
-    switch (action.type){
-        case EVENT_SAVE:
-            return Object.assign({}, state, {event: action.event});
+    switch (action.type) {
+        case EVENT_CREATE:
+            setTimeout(Action.eventCreate(), 0);
+            return state;
         default:
             return state;
     }

@@ -2,10 +2,12 @@ import React from 'react';
 import { Component } from 'react-native';
 import { connect } from 'react-redux';
 import SignIn from '../components/SignIn';
-import signInEmail from '../actions/signInEmail'
+import signInEmail from '../actions/signInEmail';
+import signUpEmail from '../actions/signUpEmail';
 
 const actions = {
     signInEmail,
+    signUpEmail,
 };
 
 export default class SignInContainer extends Component{

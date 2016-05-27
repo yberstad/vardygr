@@ -4,6 +4,8 @@ import { Component } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import SignInContainer from './containers/SignIn';
 import HomeContainer from './containers/Home'
+import EventCreateContainer from './containers/EventCreate'
+import EventDetailsContainer from './containers/EventDetails'
 import connectedToBackend from './actions/connectedToBackend';
 import loggedInSuccess from './actions/loggedInSuccess';
 
@@ -40,7 +42,9 @@ export default class Vardygr extends Component {
                 <Router>
                     <Scene key="root" hideNavBar={true}>
                         <Scene key="signIn" component={SignInContainer} title="Sign" initial={true} />
-                        <Scene key="home" component={HomeContainer} title="PageTwo" />
+                        <Scene key="home" component={HomeContainer} title="Home" />
+                        <Scene key="eventCreate" component={EventCreateContainer} title="Create Event" />
+                        <Scene key="eventDetails" component={EventDetailsContainer} title="Event" />
                     </Scene>
                 </Router>
             </Provider>
