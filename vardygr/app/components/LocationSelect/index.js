@@ -9,7 +9,7 @@ import {
     Animated } from 'react-native';
 import styles from './styles';
 import { Actions } from 'react-native-router-flux';
-import { MapView } from 'react-native-maps';
+var MapView = require('react-native-maps');
 
 var {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -47,10 +47,10 @@ export default class LocationSelect extends Component
     handleOk() {
         if (this.validInput()) {
             this.props.selectLocation(
-                this.state.marker.latitude._value,
                 this.state.marker.longitude._value,
+                this.state.marker.latitude._value,
+                this.state.region.longitudeDelta,
                 this.state.region.latitudeDelta,
-                this.state.region.longitudeDelta
             );
             Actions.pop();
         }
@@ -81,11 +81,6 @@ export default class LocationSelect extends Component
     }
 
     render(){
-        let ok;
-
-        if (this.props.connected) {
-            ok = <Button text="OK" onPress={() => this.handleOk()}/>;
-        }
         return (
             <View style={styles.container}>
                 <MapView.Animated

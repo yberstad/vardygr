@@ -40,11 +40,11 @@ export default class EventDetails extends Component {
     }
     
     handleDatePressed(){
-        Actions.eventCreateSelectDateTime;
+        Actions.eventCreateSelectDateTime();
     }
 
     handleLocationPressed(){
-        Actions.eventCreateSelectLocation;
+        Actions.eventCreateSelectLocation();
     }
 
     render() {
@@ -72,24 +72,20 @@ export default class EventDetails extends Component {
                     value = {this.state.description}
                     onChangeText={(description) => this.setState({description})}
                 />
-                <TouchableOpacity onPress={() => this.handleDatePressed()}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Select date / time"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        editable = {false}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.handleLocationPressed()}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Select position"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        editable = {false}
-                    />
-                </TouchableOpacity>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Select date / time"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onFocus = {() => this.handleDatePressed()}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Select position"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onFocus={() => this.handleLocationPressed()}
+                />
 
 
                 <Text style={styles.error}>{this.state.error}</Text>

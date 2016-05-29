@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     switch (action.type){
         case SIGNUP_EMAIL_SUCCESS:
         case LOGGED_IN_SUCCESS:
-            setTimeout(() => Actions.home(), 0);
+            setTimeout(() => Actions.main(), 0);
             return Object.assign({}, state, { signedIn: true, user: action.user });
         
         default:

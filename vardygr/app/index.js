@@ -18,8 +18,14 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import {geoLoationConfig} from './config';
 import { connect } from 'react-redux';
-import TabIcon from './components/TabIcon';
-
+//import TabIcon from './components/TabIcon';
+class TabIcon extends React.Component {
+    render(){
+        return (
+            <Text style={{color: this.props.selected ? "red" :"black"}}>{this.props.title}</Text>
+        );
+    }
+}
 const RouterWithRedux = connect()(Router);
 const store = configureStore();
 var BackgroundGeolocation = require('react-native-background-geolocation');

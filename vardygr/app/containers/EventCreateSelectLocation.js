@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
     if(state.get('createEvent').location.coordinates.length == 2)
     {
         longitude = state.get('createEvent').location.coordinates[0];
-        latitude = state.get('createEvent').location.coordinates[0];
+        latitude = state.get('createEvent').location.coordinates[1];
     }
     return {
         longitude: longitude,
