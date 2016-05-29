@@ -1,10 +1,10 @@
-import React from 'react';
-import { Component } from 'react-native';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EventDetails from '../components/EventDetails';
+import eventSave from '../actions/eventSave';
 
 const actions = {
-    eventSave
+    eventSave,
 }
 
 export default class EventCreateContainer extends Component {

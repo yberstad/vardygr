@@ -4,8 +4,9 @@ import {
     TextBox } from 'react-native';
 import Button from '../Button';
 import { Actions } from 'react-native-router-flux';
+import styles from './styles';
 
-export default class LocationSelect extends Component
+export default class EventOverview extends Component
 {
     validInput() {
         return true;
@@ -13,7 +14,7 @@ export default class LocationSelect extends Component
 
     handleOk() {
         if (this.validInput()) {
-            this.props.selectLocation(64.0, 10.0);
+            this.props.selectedDateTime( new Date().addHours(1));
             Actions.pop();
         }
     }
@@ -26,7 +27,7 @@ export default class LocationSelect extends Component
         return (
             <View style={styles.container}>
                 <Text style={styles.main}>
-                    Select location
+                    Event overview
                 </Text>
 
                 <View style={styles.buttons}>

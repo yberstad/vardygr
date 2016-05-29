@@ -21,6 +21,9 @@ Events.schema = new SimpleSchema({
         maxCount: 2,
         optional: false
     },
+    address: {
+        type: String
+    },
     participants: {
         type: [Object]
     },
@@ -45,7 +48,7 @@ Events.schema = new SimpleSchema({
     canInviteFriends: {
         type: Boolean
     },
-    startTime: {
+    startDateTime: {
         type: Date
     },
     schedule: {

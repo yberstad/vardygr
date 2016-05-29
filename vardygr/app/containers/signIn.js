@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component } from 'react-native';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SignIn from '../components/SignIn';
 import signInEmail from '../actions/signInEmail';

@@ -1,14 +1,15 @@
 import ddpClient from '../ddp';
 import { EVENT_SAVE } from '../constants/actions';
 import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/Effects';
+import { call, put, select } from 'redux-saga/effects';
 import saveEventFailure from '../actions/eventSaveFailure';
 import saveEventSuccess from '../actions/eventSaveSuccess';
+import newEventSelector from '../selectors/newEvent';
 
-function* saveEvent(action) {
+function* saveEvent() {
     try {
-        
-        const event = yield call(ddpClient.call, 'saveEvent', [action.event]);
+        const eventToSave = yield select(newEventSelector);
+        const event = yield call(ddpClient.call, 'saveEvent', [eventToSave]);
         yield put(saveEventSuccess(event));
     }
     catch (error) {

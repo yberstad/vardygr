@@ -5,7 +5,7 @@ import {
 import Button from '../Button';
 import { Actions } from 'react-native-router-flux';
 
-export default class LocationSelect extends Component
+export default class FriendSelect extends Component
 {
     validInput() {
         return true;
@@ -13,7 +13,7 @@ export default class LocationSelect extends Component
 
     handleOk() {
         if (this.validInput()) {
-            this.props.selectLocation(64.0, 10.0);
+            this.props.selectFriends([]);
             Actions.pop();
         }
     }
@@ -26,7 +26,7 @@ export default class LocationSelect extends Component
         return (
             <View style={styles.container}>
                 <Text style={styles.main}>
-                    Select location
+                    Select friends
                 </Text>
 
                 <View style={styles.buttons}>

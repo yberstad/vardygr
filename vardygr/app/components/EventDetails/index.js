@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
-    Component,
     ListView,
     Text,
     TouchableOpacity,
@@ -8,6 +7,7 @@ import {
     TextInput } from 'react-native';
 import Button from '../Button';
 import styles from './styles';
+import { Actions } from 'react-native-router-flux';
 
 export default class EventDetails extends Component {
 
@@ -17,7 +17,7 @@ export default class EventDetails extends Component {
         canInviteFriends: false,
         displayPositionOfCreator: true,
         displayPositionForAllParticipants: true
-    } = this.props.event;
+    }
 
     validInput() {
         let { title, description } = this.state;
@@ -35,7 +35,11 @@ export default class EventDetails extends Component {
     handleSave() {
         if (this.validInput()) {
             this.props.eventSave(this.state.title, this.state.description);
+            Actions.pop();
         }
+    }
+    handleDatePressed(){
+        Actions.eventCreateSelectDateTime();
     }
 
     render() {
@@ -63,6 +67,7 @@ export default class EventDetails extends Component {
                     value = {this.state.description}
                     onChangeText={(description) => this.setState({description})}
                 />
+ 
 
                 <Text style={styles.error}>{this.state.error}</Text>
 

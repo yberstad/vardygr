@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import {
+    Text,
     View,
-    TextBox } from 'react-native';
+    TouchableOpacity } from 'react-native';
 import Button from '../Button';
 import { Actions } from 'react-native-router-flux';
+import styles from './styles';
 
-export default class LocationSelect extends Component
+export default class DateTimeSelect extends Component
 {
+    constructor(props){
+        super(props);
+        Date.prototype.addHours= function(h){
+            var copiedDate = new Date(this.getTime());
+            copiedDate.setHours(copiedDate.getHours()+h);
+            return copiedDate;
+        }
+    }
+
     validInput() {
         return true;
     }
 
     handleOk() {
         if (this.validInput()) {
-            this.props.selectLocation(64.0, 10.0);
+            this.props.selectedDateTime( new Date().addHours(1));
             Actions.pop();
         }
     }
@@ -26,7 +37,7 @@ export default class LocationSelect extends Component
         return (
             <View style={styles.container}>
                 <Text style={styles.main}>
-                    Select location
+                    Select date / time
                 </Text>
 
                 <View style={styles.buttons}>
