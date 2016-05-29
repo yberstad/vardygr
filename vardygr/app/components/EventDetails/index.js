@@ -38,15 +38,18 @@ export default class EventDetails extends Component {
             Actions.pop();
         }
     }
+
     handleDatePressed(){
-        Actions.eventCreateSelectDateTime();
+        ;
     }
+
+
 
     render() {
         let save;
 
         if (this.props.connected) {
-            save = <Button text="Save" onPress={() => this.handleSave()}/>;
+            save = <Button text="Save" onPress={Actions.eventCreateSelectDateTime}/>;
         }
 
         return (
@@ -67,7 +70,16 @@ export default class EventDetails extends Component {
                     value = {this.state.description}
                     onChangeText={(description) => this.setState({description})}
                 />
- 
+                <TouchableOpacity onPress={Actions.eventCreateSelectDateTime}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="More info"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        value = {this.state.description}
+                        editable = {false}
+                    />
+                </TouchableOpacity>
 
                 <Text style={styles.error}>{this.state.error}</Text>
 
