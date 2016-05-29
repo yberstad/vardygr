@@ -17,7 +17,8 @@ export default StyleSheet.create({
         borderWidth: 1,
         marginHorizontal: 20,
         marginVertical: 5,
-        padding: 5
+        padding: 5,
+        flex: 1
     },
     buttons: {
         flexDirection: 'row'

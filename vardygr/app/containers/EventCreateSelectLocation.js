@@ -11,8 +11,16 @@ export default class EventCreateSelectLocationContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+    let longitude = state.get('app').longitude;
+    let latitude = state.get('app').latitude;
+    if(state.get('createEvent').location.coordinates.length == 2)
+    {
+        longitude = state.get('createEvent').location.coordinates[0];
+        latitude = state.get('createEvent').location.coordinates[0];
+    }
     return {
-        location: state.get('createEvent').location,
+        longitude: longitude,
+        latitude: latitude,
         connected: state.get('app').connected
     }
 };
