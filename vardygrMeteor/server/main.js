@@ -28,7 +28,7 @@ Meteor.methods({
         event.createdBy = (Meteor.userId()) ? Meteor.userId() : '';
         event.timestamp = new Date();
         Events.schema.validate(event);
-        Events.insert(event);
+        return Events.insert(event);
     }
 });
 

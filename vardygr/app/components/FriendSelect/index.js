@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {
     View,
-    TextBox } from 'react-native';
+    TextBox,
+    Text } from 'react-native';
 import Button from '../Button';
+import styles from './styles';
 import { Actions } from 'react-native-router-flux';
 
 export default class FriendSelect extends Component
@@ -13,7 +15,9 @@ export default class FriendSelect extends Component
 
     handleOk() {
         if (this.validInput()) {
-            this.props.selectFriends([]);
+            let friends = [];
+            friends.push('xfiEpo6eFJFxsaK6G');
+            this.props.selectFriends(friends);
             Actions.pop();
         }
     }

@@ -35,7 +35,7 @@ export default class EventDetails extends Component {
     handleSave() {
         if (this.validInput()) {
             this.props.eventSave(this.state.title, this.state.description);
-            Actions.pop();
+            Actions.main();
         }
     }
     
@@ -45,6 +45,10 @@ export default class EventDetails extends Component {
 
     handleLocationPressed(){
         Actions.eventCreateSelectLocation();
+    }
+
+    handleParticipantsPressed(){
+        Actions.eventCreateSelectParticipants();
     }
 
     render() {
@@ -85,6 +89,20 @@ export default class EventDetails extends Component {
                     autoCapitalize="none"
                     autoCorrect={false}
                     onFocus={() => this.handleLocationPressed()}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Select participants"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onFocus={() => this.handleParticipantsPressed()}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Select coHosts"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onFocus={() => Actions.eventCreateSelectCoHosts()}
                 />
 
 

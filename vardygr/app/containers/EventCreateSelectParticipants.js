@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FriendSelect from '../components/FriendSelect';
 import eventCreateSelectParticipants from '../actions/eventCreateSelectParticipants';
 import { bindActionCreators } from 'redux';
+import participantsToFriendSelect from '../selectors/participantsToFriendSelect';
 
 export default class EventCreateSelectParticipantsContainer extends Component {
     render(){
@@ -12,7 +13,7 @@ export default class EventCreateSelectParticipantsContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        selectedFriends: state.get('createEvent').participants,
+        selectedFriends: participantsToFriendSelect,
         connected: state.get('app').connected
     }
 };

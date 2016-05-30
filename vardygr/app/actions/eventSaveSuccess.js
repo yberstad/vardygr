@@ -1,8 +1,8 @@
 import { EVENT_SAVE_SUCCESS } from '../constants/actions';
 
-export default (event) => {
+export default (id) => {
     return {
         type: EVENT_SAVE_SUCCESS,
-        event
+        id
     };
 }

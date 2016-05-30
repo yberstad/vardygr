@@ -1,8 +1,9 @@
 import { EVENT_SAVE } from '../constants/actions';
 
-export default (event) => {
+export default (title, description) => {
     return {
         type: EVENT_SAVE,
-        event
+        title,
+        description
     };
 }

@@ -39,12 +39,6 @@ Events.schema = new SimpleSchema({
     "participants.$.isCoHost": {
         type: Boolean
     },
-    coHosts: {
-        type: [Object]
-    },
-    "coHosts.$.userId": {
-        type: String
-    },    
     canInviteFriends: {
         type: Boolean
     },

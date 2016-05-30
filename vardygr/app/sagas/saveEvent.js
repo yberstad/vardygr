@@ -9,8 +9,9 @@ import newEventSelector from '../selectors/newEvent';
 function* saveEvent() {
     try {
         const eventToSave = yield select(newEventSelector);
-        const event = yield call(ddpClient.call, 'saveEvent', [eventToSave]);
-        yield put(saveEventSuccess(event));
+        console.log(JSON.stringify(eventToSave));
+        const id = yield call(ddpClient.callPromise, 'saveEvent', [eventToSave]);
+        yield put(saveEventSuccess(id));
     }
     catch (error) {
         yield put(saveEventFailure(error));
