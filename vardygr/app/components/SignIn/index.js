@@ -53,16 +53,15 @@ export default class SignIn extends Component {
             AccessToken.getCurrentAccessToken()
                 .then((res) => {
                     if (res) {
-                        this.props.signInFacebook(result);
+                        this.props.signInFacebook(res);
                     }
                     else {
                         this.props.signInFacebookFailure();
                     }
-                }).catch((error) => {
-                this.props.signInFacebookFailure(error);
-            });
+                });
         }
     }
+
 
     render() {
         let signIn, createAccount;
@@ -104,8 +103,8 @@ export default class SignIn extends Component {
                 </View>
 
                 <LoginButton
-                    publishPermissions={["publish_actions"]}
-                    onLoginFinished={() => onLoginFinished()}
+                    readPermissions={['public_profile', 'email', 'user_friends']}
+                    onLoginFinished={(error, result) => this.onLoginFinished(error, result)}
                     onLogoutFinished={() => this.props.signOutFacebook()}/>
             </View>
         );
