@@ -118,10 +118,15 @@ ddpClient.loginWithToken = (cb) => {
     });
 };
 
-ddpClient.logout = (cb) => {
-  AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
-    then((res) => {
-      ddpClient.call("logout", [], cb);
+ddpClient.logout = () => {
+    return new Promise((resolve, reject) =>
+    {
+      AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
+        then((res) => {
+          ddpClient.call("logout", [], () =>{
+              resolve();
+          });
+        });
     });
 };
 

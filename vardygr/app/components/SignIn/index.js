@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import Button from '../Button';
 import styles from './styles';
+import FBSDK, { LoginButton, AccessToken } from 'react-native-fbsdk';
+
 
 export default class SignIn extends Component {
 
@@ -39,6 +41,26 @@ export default class SignIn extends Component {
     handleCreateAccount() {
         if (this.validInput()) {
             this.props.signUpEmail(this.state.email, this.state.password);
+        }
+    }
+
+    onLoginFinished (error, result) {
+        if (error) {
+            this.props.signInFacebookFailure(result.error);
+        } else if (result.isCancelled) {
+            this.props.signInFacebookFailure(result);
+        } else {
+            AccessToken.getCurrentAccessToken()
+                .then((res) => {
+                    if (res) {
+                        this.props.signInFacebook(result);
+                    }
+                    else {
+                        this.props.signInFacebookFailure();
+                    }
+                }).catch((error) => {
+                this.props.signInFacebookFailure(error);
+            });
         }
     }
 
@@ -80,6 +102,11 @@ export default class SignIn extends Component {
                     {signIn}
                     {createAccount}
                 </View>
+
+                <LoginButton
+                    publishPermissions={["publish_actions"]}
+                    onLoginFinished={() => onLoginFinished()}
+                    onLogoutFinished={() => this.props.signOutFacebook()}/>
             </View>
         );
     }

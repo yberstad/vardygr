@@ -1,4 +1,10 @@
 {
+  "oauth": {
+    "facebook": {
+      "appId": "1728675527403755",
+      "secret": "facc49a465408ce7ecb718f1977676c3"
+    }
+  },
   "galaxy.meteor.com": {
     "env": {
       "ROOT_URL": "http://georequest-app.meteorapp.com",
