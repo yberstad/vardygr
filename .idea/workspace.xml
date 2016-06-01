@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a63395d6-dd52-4370-b5ec-ab53db0ea6dd" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/build.gradle" afterPath="$PROJECT_DIR$/vardygr/android/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/src/main/java/com/vardygr/MainActivity.java" afterPath="$PROJECT_DIR$/vardygr/android/app/src/main/java/com/vardygr/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/vardygr/android/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/settings.gradle" afterPath="$PROJECT_DIR$/vardygr/android/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/components/SignIn/index.js" afterPath="$PROJECT_DIR$/vardygr/app/components/SignIn/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/sagas/signOutWithFacebook.js" afterPath="$PROJECT_DIR$/vardygr/app/sagas/signOutWithFacebook.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/ios/vardygr.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/vardygr/ios/vardygr.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/package.json" afterPath="$PROJECT_DIR$/vardygr/package.json" />
     </list>
     <ignored path="vardygr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -615,7 +606,7 @@
       <workItem from="1464628999529" duration="112000" />
       <workItem from="1464629136759" duration="14391000" />
       <workItem from="1464710885874" duration="9481000" />
-      <workItem from="1464814950357" duration="1236000" />
+      <workItem from="1464814950357" duration="1287000" />
     </task>
     <task id="LOCAL-00001" summary="Added fastlane">
       <created>1463866315988</created>
@@ -687,11 +678,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464646852411</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Facebook checkin">
+      <created>1464820524269</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1464820524269</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104826000" />
+    <option name="totallyTimeSpent" value="104877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -700,7 +698,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15429173" sideWeight="0.49516907" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50883394" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5097345" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23321554" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -737,7 +735,8 @@
     <MESSAGE value="Before adding geolocation component" />
     <MESSAGE value="After adding geoloacation" />
     <MESSAGE value="First version of saving an event with &quot;dummy&quot; data." />
-    <option name="LAST_COMMIT_MESSAGE" value="First version of saving an event with &quot;dummy&quot; data." />
+    <MESSAGE value="Facebook checkin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Facebook checkin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
