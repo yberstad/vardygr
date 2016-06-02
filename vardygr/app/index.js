@@ -4,12 +4,12 @@ import { Text } from 'react-native';
 import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 'react-native-router-flux';
 import SignInContainer from './containers/SignIn';
 import HomeContainer from './containers/Home'
-import EventCreate from './containers/EventCreate'
-import EventDetails from './containers/EventDetails';
-import EventCreateSelectCoHosts from './containers/EventCreateSelectCoHosts';
-import EventCreateSelectDateTime from './containers/EventCreateSelectDateTime';
-import EventCreateSelectLocation from './containers/EventCreateSelectLocation';
-import EventCreateSelectParticipants from './containers/EventCreateSelectParticipants';
+import EventEdit from './containers/EventEdit'
+import EventOverview from './containers/EventOverview';
+import EventEditSelectCoHosts from './containers/EventEditSelectCoHosts';
+import EventEditSelectDateTime from './containers/EventEditSelectDateTime';
+import EventEditSelectLocation from './containers/EventEditSelectLocation';
+import EventEditSelectParticipants from './containers/EventEditSelectParticipants';
 import EventTracking from './containers/EventTracking'
 import appConnected from './actions/appConnected';
 import appCurrentPosition from './actions/appCurrentPosition';
@@ -58,7 +58,7 @@ export default class Vardygr extends Component {
                 store.dispatch(appConnected(true));
                 ddpClient.loginWithToken((err, res) => {
                     if (!err) {
-                        store.dispatch(loggedInSuccess());
+                        store.dispatch(loggedInSuccess(res));
                     }
                 });
             }
@@ -74,13 +74,14 @@ export default class Vardygr extends Component {
                         <Scene key="main" tabs={true} hideNavBar={true} >
                             <Scene key="home" component={HomeContainer} title="Home" hideNavBar={true} hideTabBar={false} icon={TabIcon}/>
                             <Scene key="event"  title="Create Event" icon={TabIcon} >
-                                <Scene key="eventCreate" component={EventCreate} title="Create Event"/>
-                                <Scene key="eventCreateSelectCoHosts" component={EventCreateSelectCoHosts} title="Select Co-Hosts" />
-                                <Scene key="eventCreateSelectDateTime" component={EventCreateSelectDateTime} title="Select Date / Time" />
-                                <Scene key="eventCreateSelectLocation" component={EventCreateSelectLocation} title="Select Location" />
-                                <Scene key="eventCreateSelectParticipants" component={EventCreateSelectParticipants} title="Select Participants" />
+                                <Scene key="eventEdit" component={EventEdit} title="Create Event"/>
+                                <Scene key="eventEditSelectCoHosts" component={EventEditSelectCoHosts} title="Select Co-Hosts" />
+                                <Scene key="eventEditSelectDateTime" component={EventEditSelectDateTime} title="Select Date / Time" />
+                                <Scene key="eventEditSelectLocation" component={EventEditSelectLocation} title="Select Location" />
+                                <Scene key="eventEditSelectParticipants" component={EventEditSelectParticipants} title="Select Participants" />
                             </Scene>
                         </Scene>
+                        <Scene key="eventOverview" component={EventOverview} title="Event Details" hideNavBar={false} hideTabBar={true} icon={TabIcon}/>
                     </Scene>
                 </RouterWithRedux>
             </Provider>

@@ -40,15 +40,15 @@ export default class EventDetails extends Component {
     }
     
     handleDatePressed(){
-        Actions.eventCreateSelectDateTime();
+        Actions.eventEditSelectDateTime();
     }
 
     handleLocationPressed(){
-        Actions.eventCreateSelectLocation();
+        Actions.eventEditSelectLocation();
     }
 
     handleParticipantsPressed(){
-        Actions.eventCreateSelectParticipants();
+        Actions.eventEditSelectParticipants();
     }
 
     render() {
@@ -102,7 +102,7 @@ export default class EventDetails extends Component {
                     placeholder="Select coHosts"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    onFocus={() => Actions.eventCreateSelectCoHosts()}
+                    onFocus={() => Actions.eventEditSelectCoHosts()}
                 />
 
 

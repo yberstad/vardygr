@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     View,
-    TextBox } from 'react-native';
+    TextBox,
+    Text } from 'react-native';
 import Button from '../Button';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
@@ -14,8 +15,7 @@ export default class EventOverview extends Component
 
     handleOk() {
         if (this.validInput()) {
-            this.props.selectedDateTime( new Date().addHours(1));
-            Actions.pop();
+            Actions.main();
         }
     }
     render(){

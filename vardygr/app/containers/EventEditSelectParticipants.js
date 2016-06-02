@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FriendSelect from '../components/FriendSelect';
-import eventCreateSelectParticipants from '../actions/eventCreateSelectParticipants';
+import eventEditSelectParticipants from '../actions/eventEditSelectParticipants';
 import { bindActionCreators } from 'redux';
 import participantsToFriendSelect from '../selectors/participantsToFriendSelect';
 
-export default class EventCreateSelectParticipantsContainer extends Component {
+export default class EventEditSelectParticipantsContainer extends Component {
     render(){
         return <FriendSelect {... this.props}/>
     }
@@ -20,8 +20,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectFriends: bindActionCreators(eventCreateSelectParticipants, dispatch)
+        selectFriends: bindActionCreators(eventEditSelectParticipants, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventCreateSelectParticipantsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EventEditSelectParticipantsContainer);

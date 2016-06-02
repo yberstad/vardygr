@@ -1,8 +1,8 @@
-import { EVENT_SAVE } from '../constants/actions';
+import { EVENT_UPDATE } from '../constants/actions';
 
 export default (event) => {
     return {
-        type: EVENT_SAVE,
+        type: EVENT_UPDATE,
         event
     };
 }

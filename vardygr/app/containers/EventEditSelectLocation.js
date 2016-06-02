@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LocationSelect from '../components/LocationSelect';
-import eventCreateSelectLocation from '../actions/eventCreateSelectLocation';
+import eventEditSelectLocation from '../actions/eventEditSelectLocation';
 import { bindActionCreators } from 'redux';
 
-export default class EventCreateSelectLocationContainer extends Component {
+export default class EventEditSelectLocationContainer extends Component {
     render(){
         return <LocationSelect {... this.props}/>
     }
@@ -13,10 +13,10 @@ export default class EventCreateSelectLocationContainer extends Component {
 const mapStateToProps = (state) => {
     let longitude = state.get('app').longitude;
     let latitude = state.get('app').latitude;
-    if(state.get('createEvent').location.coordinates.length == 2)
+    if(state.get('currentEvent').location.coordinates.length == 2)
     {
-        longitude = state.get('createEvent').location.coordinates[0];
-        latitude = state.get('createEvent').location.coordinates[1];
+        longitude = state.get('currentEvent').location.coordinates[0];
+        latitude = state.get('currentEvent').location.coordinates[1];
     }
     return {
         longitude: longitude,
@@ -27,8 +27,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectLocation: bindActionCreators(eventCreateSelectLocation, dispatch)
+        selectLocation: bindActionCreators(eventEditSelectLocation, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventCreateSelectLocationContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EventEditSelectLocationContainer);
