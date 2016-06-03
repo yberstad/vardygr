@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EventOverview from '../components/EventOverview';
+import { createStructuredSelector } from 'reselect';
+import appState from '../selectors/appState';
+import currentEvent from '../selectors/currentEvent';
+
+const selectors = {
+    appState,
+    currentEvent
+}
 
 export default class EventOverviewContainer extends Component {
     render(){
@@ -8,11 +16,4 @@ export default class EventOverviewContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        event: state.get('currentEvent'),
-        connected: state.get('app').connected
-    }
-};
-
-export default connect(mapStateToProps)(EventOverviewContainer);
+export default connect(createStructuredSelector(selectors))(EventOverviewContainer);

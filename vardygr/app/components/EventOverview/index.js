@@ -18,20 +18,31 @@ export default class EventOverview extends Component
             Actions.main();
         }
     }
+
+    handleMap() {
+        if (this.validInput()) {
+            Actions.eventTracking();
+        }
+    }
+
     render(){
+        const { currentEvent, appState } = this.props;
         let ok;
 
-        if (this.props.connected) {
-            ok = <Button text="OK" onPress={() => this.handleOk()}/>;
+        if (appState.connected) {
+            ok = <Button text="Home" onPress={() => this.handleOk()}/>;
+            map = <Button text="Map" onPress={() => this.handleMap()}/>;
         }
         return (
             <View style={styles.container}>
                 <Text style={styles.main}>
                     Event overview
+                    (id: {currentEvent._id})
                 </Text>
 
                 <View style={styles.buttons}>
                     {ok}
+                    {map}
                 </View>
             </View>
         );

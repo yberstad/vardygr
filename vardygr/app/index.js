@@ -61,7 +61,6 @@ export default class Vardygr extends Component {
                     if (!err) {
                         store.dispatch(loggedInSuccess(res));
                         store.dispatch(eventGetList());
-                        //ddpClient.call('getEventList', )
                     }
                 });
             }
@@ -75,7 +74,7 @@ export default class Vardygr extends Component {
                     <Scene key="root" hideNavBar={true} hideTabBar={true}>
                         <Scene key="signIn" component={SignInContainer} title="Sign" initial={true} />
                         <Scene key="main" tabs={true} hideNavBar={true} >
-                            <Scene key="home" component={HomeContainer} title="Home" hideNavBar={true} hideTabBar={false} icon={TabIcon}/>
+                            <Scene key="home" component={HomeContainer} title="Home" hideNavBar={false} hideTabBar={false} icon={TabIcon}/>
                             <Scene key="event"  title="Create Event" icon={TabIcon} >
                                 <Scene key="eventEdit" component={EventEdit} title="Create Event"/>
                                 <Scene key="eventEditSelectCoHosts" component={EventEditSelectCoHosts} title="Select Co-Hosts" />
@@ -84,7 +83,8 @@ export default class Vardygr extends Component {
                                 <Scene key="eventEditSelectParticipants" component={EventEditSelectParticipants} title="Select Participants" />
                             </Scene>
                         </Scene>
-                        <Scene key="eventOverview" component={EventOverview} title="Event Details" hideNavBar={false} hideTabBar={true} icon={TabIcon}/>
+                        <Scene key="eventOverview" component={EventOverview} title="Event Overview" hideNavBar={false} hideTabBar={true} icon={TabIcon}/>
+                        <Scene key="eventTracking" component={EventTracking} title="Event Tracking" hideNavBar={false} hideTabBar={true} icon={TabIcon}/>
                     </Scene>
                 </RouterWithRedux>
             </Provider>

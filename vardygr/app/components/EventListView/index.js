@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListView, DataSource, View, Text, Image, TouchableHighlight } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -11,6 +12,7 @@ export default class EventListView extends Component {
 
     rowPressed(id){
         this.props.eventSetCurrent(id);
+        Actions.eventOverview();
     }
 
     renderRow(rowData)
