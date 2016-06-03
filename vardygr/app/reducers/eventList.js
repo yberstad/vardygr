@@ -7,7 +7,7 @@ var initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case EVENT_GET_LIST_SUCCESS:
-            return Object.assign({}, action.eventList );
+            return Object.assign({}, state, { eventList: action.eventList } );
         default:
             return state;
     }

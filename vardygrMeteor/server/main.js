@@ -12,7 +12,7 @@ Meteor.methods({
         if (!Meteor.userId()) {
             return null;
         }
-        return Events.find({ "participants.userId": Meteor.userId()});
+        return Events.find().fetch();
     }
 });
 

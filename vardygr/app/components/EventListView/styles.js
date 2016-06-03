@@ -3,15 +3,19 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 20,
+    },
+    row_container: {
+        flex: 1,
         padding: 12,
         flexDirection: 'row',
         alignItems: 'center',
     },
-    text: {
+    row_text: {
         marginLeft: 12,
         fontSize: 16,
     },
-    photo: {
+    row_photo: {
         height: 40,
         width: 40,
         borderRadius: 20,

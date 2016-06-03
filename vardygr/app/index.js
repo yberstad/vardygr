@@ -14,6 +14,7 @@ import EventTracking from './containers/EventTracking'
 import appConnected from './actions/appConnected';
 import appCurrentPosition from './actions/appCurrentPosition';
 import loggedInSuccess from './actions/loggedInSuccess';
+import eventGetList from './actions/eventGetList';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import {geoLoationConfig} from './config';
@@ -59,6 +60,8 @@ export default class Vardygr extends Component {
                 ddpClient.loginWithToken((err, res) => {
                     if (!err) {
                         store.dispatch(loggedInSuccess(res));
+                        store.dispatch(eventGetList());
+                        //ddpClient.call('getEventList', )
                     }
                 });
             }

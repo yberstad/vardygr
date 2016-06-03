@@ -34,6 +34,7 @@ ddpClient.callPromise = (methodName, params) => {
                 }
             }, () => {
                 // callback which fires when server has finished
+                //resolve({});
             }
         );
     });

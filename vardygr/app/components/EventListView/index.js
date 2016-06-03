@@ -1,31 +1,41 @@
 import React, { Component } from 'react';
-import { ListView, DataSource, View, Text, Image } from 'react-native';
+import { ListView, DataSource, View, Text, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
 
-const Row = (props) => (
-    <View style={styles.container}>
-        <Text style={styles.text}>
-            {`${props.event.title} `}
-        </Text>
-    </View>
-);
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 export default class EventListView extends Component {
     constructor(props) {
         super(props);
-
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(this.props.eventList)
-        };
     }
+
+    rowPressed(id){
+        this.props.eventSetCurrent(id);
+    }
+
+    renderRow(rowData)
+    {
+        var imageUrl =  'https://graph.facebook.com/' + 1028115007225766 + '/picture?type=square';
+
+        return (
+            <TouchableHighlight onPress={() => this.rowPressed(rowData._id)} underlayColor='#dddddd'>
+                <View style={styles.row_container}>
+                    <Image source={{ uri: imageUrl}} style={styles.row_photo} />
+                    <Text style={styles.row_text}>
+                        {`${rowData.title}`}
+                    </Text>
+                </View>
+            </TouchableHighlight>
+        );
+    }
+
     render() {
+        let dataSource = ds.cloneWithRows(this.props.eventList);
         return (
             <ListView
                 style={styles.container}
-                dataSource={this.state.dataSource}
-                renderRow={(data) => <Row {...data} />}
-            />
+                dataSource={dataSource}
+                renderRow={(data) => this.renderRow(data)} />
         );
     }
 }
