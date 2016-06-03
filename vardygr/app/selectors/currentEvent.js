@@ -6,7 +6,7 @@ export default createSelector([
     ,
     (currentEvent, eventList) => {
         return eventList.find((event) => {
-            return event._id === currentEvent.selectedId;
+            return event._id === currentEvent._id;
         })
     }
 );

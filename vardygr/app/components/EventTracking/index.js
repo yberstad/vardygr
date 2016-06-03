@@ -1,18 +1,110 @@
 import React, { Component } from 'react';
 import {
-    View, 
-    TextBox,
-    Text } from 'react-native';
+    Dimensions,
+    View,
+    StyleSheet,
+    Platform,
+    Text,
+    TouchableOpacity,
+    Animated } from 'react-native';
+import ddpClient from '../../ddp';
 import styles from './styles';
+import { Actions } from 'react-native-router-flux';
+var MapView = require('react-native-maps');
+
+var {width, height} = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
 
 export default class EventTracking extends Component
 {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            markers: [],
+            positions: null,
+            region: new Animated.Region({
+                longitude: props.currentEvent.location.coordinates[0],
+                latitude: props.currentEvent.location.coordinates[1],
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA
+            }),
+            zoomEnabled: true
+        };
+    }
+    componentWillMount() {
+        this.makeSubscription();
+        this.observeLocations();
+    }
+
+    makeSubscription() {
+        ddpClient.subscribe("positions", [this.props.currentEvent._id] , () => {
+            //console.log('subscribe-add: ' + JSON.stringify(ddpClient.collections.positions));
+            this.setState({positions: ddpClient.collections.positions});
+        });
+    }
+
+    observeLocations() {
+        var _this = this;
+        let observer = ddpClient.observe("positions");
+        observer.added = (id) => {
+            //console.log('observe-add: ' + JSON.stringify(ddpClient.collections.positions));
+            _this.setState({positions: ddpClient.collections.positions})
+            _this.setState({markers: _this.getMarkerList(ddpClient.collections.positions)});
+        }
+        observer.changed = (id, oldFields, clearedFields, newFields) => {
+            //console.log('observe-changed: ' + JSON.stringify(ddpClient.collections.positions));
+            _this.setState({positions: ddpClient.collections.positions})
+            _this.setState({markers: _this.getMarkerList(ddpClient.collections.positions)});
+        }
+        observer.removed = (id, oldValue) => {
+            //console.log('observe-removed: ' + JSON.stringify(ddpClient.collections.positions));
+            _this.setState({positions: ddpClient.collections.positions})
+        }
+
+    }
+
+    getMarkerList(collection) {
+        var list = [];
+        for (var id in collection) {
+            var location = collection[id];
+            var marker = {};
+            marker.latlng = {
+                longitude: location.longitude,
+                latitude: location.latitude
+            };
+            marker.title = location.insertedBy;
+            marker.description = location.insertedBy;
+            list.push(marker);
+        }
+        return list;
+    }
+
+    onRegionChange(region) {
+        this.setState({ region });
+    }
+
     render(){
         return (
             <View style={styles.container}>
-                <Text style={styles.main}>
-                    Track current event
-                </Text>
+                <MapView.Animated
+                    ref="map"
+                    style={styles.map}
+                    region={this.state.region}
+                    onRegionChange={(region) => this.onRegionChange(region)}
+                    zoomEnabled={this.state.zoomEnabled}
+                >
+                    {this.state.markers.map(marker => (
+                        <MapView.Marker
+                            coordinate={marker.latlng}
+                            title={marker.title}
+                            description={marker.description}
+                        />
+                    ))}
+                </MapView.Animated>
             </View>
         );
     }

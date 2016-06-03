@@ -36,18 +36,6 @@ BackgroundGeolocation.configure(geoLoationConfig());
 export default class Vardygr extends Component {
     constructor(props) {
         super(props);
-
-        BackgroundGeolocation.start(function() {
-            console.log('BackgroundGeolocation started successfully');
-
-            // Fetch current position
-            BackgroundGeolocation.getCurrentPosition({timeout: 30}, function(location) {
-                store.dispatch(appCurrentPosition(location.coords.longitude, location.coords.latitude));
-                console.log('BackgroundGeolocation received current position: ', JSON.stringify(location));
-            }, function(error) {
-                console.log('Location error: ' + error);
-            });
-        });
     }
 
     componentWillMount() {
@@ -61,9 +49,39 @@ export default class Vardygr extends Component {
                     if (!err) {
                         store.dispatch(loggedInSuccess(res));
                         store.dispatch(eventGetList());
+                        this.startGeoTracking();
                     }
                 });
             }
+        });
+    }
+
+    startGeoTracking()
+    {
+        BackgroundGeolocation.start(function() {
+            console.log('BackgroundGeolocation started successfully');
+            BackgroundGeolocation.changePace(true);
+
+            // Fetch current position
+            BackgroundGeolocation.getCurrentPosition({timeout: 30}, function(location) {
+                store.dispatch(appCurrentPosition(location.coords.longitude, location.coords.latitude));
+                console.log('BackgroundGeolocation received current position: ', JSON.stringify(location));
+            }, function(error) {
+                console.log('Location error: ' + error);
+            });
+        });
+
+        // This handler fires whenever bgGeo receives a location update.
+        BackgroundGeolocation.on('location', function(location) {
+            var locationData = {
+                longitude: location.coords.longitude,
+                latitude: location.coords.latitude,
+                eventId: 'AHdM2LQd6c7W5R889',
+                timestamp: location.timestamp
+            }
+            ddpClient.call('addPosition', [locationData]);
+
+            console.log('- [js]location: ', JSON.stringify(location));
         });
     }
 

@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 
 var initialState  = {
-    selectedId: null,
+    _id: null,
     title: '',
     description: '',
     location: {
@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case EVENT_SET_CURRENT:
             return Object.assign({}, state, {
-                selectedId: action.id
+                _id: action.id
             });
         case EVENT_UPDATE:
             return Object.assign({}, state, {
@@ -55,7 +55,7 @@ export default (state = initialState, action) => {
             });
         case EVENT_SAVE_SUCCESS:
             setTimeout(() => Actions.eventOverview({type:'reset'}),0);
-            return Object.assign({}, state, {selectedId: action.id});
+            return Object.assign({}, state, {_id: action.id});
         case EVENT_EDIT_SELECT_LOCATION:
             let selectedLocation = {
                 type: "Point",

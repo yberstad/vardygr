@@ -2,30 +2,42 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
     },
-    main: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
+    map: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
     },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginHorizontal: 20,
-        marginVertical: 5,
-        padding: 5
+    bubble: {
+        backgroundColor: 'rgba(255,255,255,0.7)',
+        paddingHorizontal: 18,
+        paddingVertical: 12,
+        borderRadius: 20,
     },
-    buttons: {
-        flexDirection: 'row'
+    latlng: {
+        width: 200,
+        alignItems: 'stretch',
     },
-    error: {
-        color: 'red',
-        height: 20
-    }
+    button: {
+        width: 80,
+        paddingHorizontal: 12,
+        alignItems: 'center',
+        marginHorizontal: 10,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        marginVertical: 20,
+        backgroundColor: 'transparent',
+    },
 });
 
 
