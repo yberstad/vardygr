@@ -15,6 +15,7 @@ import appConnected from './actions/appConnected';
 import appCurrentPosition from './actions/appCurrentPosition';
 import loggedInSuccess from './actions/loggedInSuccess';
 import eventGetList from './actions/eventGetList';
+import positionAdd from './actions/positionAdd';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import {geoLoationConfig} from './config';
@@ -73,15 +74,7 @@ export default class Vardygr extends Component {
 
         // This handler fires whenever bgGeo receives a location update.
         BackgroundGeolocation.on('location', function(location) {
-            var locationData = {
-                longitude: location.coords.longitude,
-                latitude: location.coords.latitude,
-                eventId: 'AHdM2LQd6c7W5R889',
-                timestamp: location.timestamp
-            }
-            ddpClient.call('addPosition', [locationData]);
-
-            console.log('- [js]location: ', JSON.stringify(location));
+            store.dispatch(positionAdd(location.coords.longitude, location.coords.latitude))
         });
     }
 

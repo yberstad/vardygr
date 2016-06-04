@@ -12,7 +12,7 @@ Meteor.methods({
         if (!Meteor.userId()) {
             return null;
         }
-        return Events.find().fetch();
+        return Events.find({ "participants.userId": Meteor.userId()}).fetch();
     }
 });
 
@@ -50,7 +50,7 @@ Meteor.publish('positions', function(eventId) {
     const sub = this;
     let initializing = true;
     const pipeline = [
-        {$match: {eventId: eventId}},
+        {$match: {eventIds: eventId}},
         {$sort: {createdBy: 1, timestamp: 1}},
         {$group: {
             _id: "$createdBy",
@@ -84,14 +84,14 @@ Meteor.publish('positions', function(eventId) {
         sub._iteration = sub._iteration || 0;
         var matchedLocations =  Positions.aggregate(pipeline);
         _(matchedLocations).forEach(function(location){
-            var _id = location.insertedBy;
+            var _id = location.createdBy;
             if(typeof sub._ids[_id] !== 'undefined'){
                 // Aggregate and update our collection with the new data changes
-                sub.changed('positions', location.insertedBy, location);
+                sub.changed('positions', location.createdBy, location);
             }
             else {
                 // Aggregate and then add a new record to our collection
-                sub.added('positions', location.insertedBy, location);
+                sub.added('positions', location.createdBy, location);
             }
             sub._ids[_id] = sub._iteration++;
         });

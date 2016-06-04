@@ -75,7 +75,7 @@ Events.schema = new SimpleSchema({
 
 Positions = new Mongo.Collection('positions');
 Positions.schema = new SimpleSchema({
-    eventId: {type: String},
+    eventIds: {type: String},
     location: {
         type: Object,
         index: '2dsphere'

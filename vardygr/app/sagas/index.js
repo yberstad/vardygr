@@ -5,6 +5,7 @@ import { watchSignInWithFacebook } from './signInWithFacebook';
 import { watchSignOutWithFacebook } from './signOutWithFacebook';
 import { watchSaveEvent } from './saveEvent';
 import { watchEventGetList } from './getEventList';
+import { watchAddPosition } from './addPosition';
 /*
  * The entry point for all the sagas used in this application.
  */
@@ -15,6 +16,7 @@ export default function *root() {
         fork(watchSaveEvent),
         fork(watchSignInWithFacebook),
         fork(watchSignOutWithFacebook),
-        fork(watchEventGetList)
+        fork(watchEventGetList),
+        fork(watchAddPosition)
     ];
 }

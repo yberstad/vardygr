@@ -42,7 +42,7 @@ export default class EventTracking extends Component
 
     makeSubscription() {
         ddpClient.subscribe("positions", [this.props.currentEvent._id] , () => {
-            //console.log('subscribe-add: ' + JSON.stringify(ddpClient.collections.positions));
+            console.log('subscribe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + this.props.currentEvent._id);
             this.setState({positions: ddpClient.collections.positions});
         });
     }
@@ -51,17 +51,17 @@ export default class EventTracking extends Component
         var _this = this;
         let observer = ddpClient.observe("positions");
         observer.added = (id) => {
-            //console.log('observe-add: ' + JSON.stringify(ddpClient.collections.positions));
+            console.log('observe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + this.props.currentEvent._id);
             _this.setState({positions: ddpClient.collections.positions})
             _this.setState({markers: _this.getMarkerList(ddpClient.collections.positions)});
         }
         observer.changed = (id, oldFields, clearedFields, newFields) => {
-            //console.log('observe-changed: ' + JSON.stringify(ddpClient.collections.positions));
+            console.log('observe-changed: ' + JSON.stringify(ddpClient.collections.positions));
             _this.setState({positions: ddpClient.collections.positions})
             _this.setState({markers: _this.getMarkerList(ddpClient.collections.positions)});
         }
         observer.removed = (id, oldValue) => {
-            //console.log('observe-removed: ' + JSON.stringify(ddpClient.collections.positions));
+            console.log('observe-removed: ' + JSON.stringify(ddpClient.collections.positions));
             _this.setState({positions: ddpClient.collections.positions})
         }
 
@@ -70,14 +70,15 @@ export default class EventTracking extends Component
     getMarkerList(collection) {
         var list = [];
         for (var id in collection) {
-            var location = collection[id];
+            var position = collection[id];
             var marker = {};
             marker.latlng = {
-                longitude: location.longitude,
-                latitude: location.latitude
+                longitude: position.coordinates[0],
+                latitude: position.coordinates[1]
             };
-            marker.title = location.insertedBy;
-            marker.description = location.insertedBy;
+            marker.title = position.createdBy;
+            marker.description = position.createdBy;
+            marker.id = position.id;
             list.push(marker);
         }
         return list;
@@ -102,6 +103,7 @@ export default class EventTracking extends Component
                             coordinate={marker.latlng}
                             title={marker.title}
                             description={marker.description}
+                            key={marker.id}
                         />
                     ))}
                 </MapView.Animated>
