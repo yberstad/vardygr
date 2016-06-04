@@ -54,7 +54,6 @@ export default (state = initialState, action) => {
                 description: action.description
             });
         case EVENT_SAVE_SUCCESS:
-            setTimeout(() => Actions.eventOverview({type:'reset'}),0);
             return Object.assign({}, state, {_id: action.id});
         case EVENT_EDIT_SELECT_LOCATION:
             let selectedLocation = {

@@ -15,7 +15,7 @@ export default class EventOverview extends Component
 
     handleOk() {
         if (this.validInput()) {
-            Actions.main();
+            Actions.pop();
         }
     }
 
@@ -30,7 +30,7 @@ export default class EventOverview extends Component
         let ok;
 
         if (appState.connected) {
-            ok = <Button text="Home" onPress={() => this.handleOk()}/>;
+            ok = <Button text="Back" onPress={() => this.handleOk()}/>;
             map = <Button text="Map" onPress={() => this.handleMap()}/>;
         }
         return (

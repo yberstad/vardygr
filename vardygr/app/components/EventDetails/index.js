@@ -52,8 +52,10 @@ export default class EventDetails extends Component {
     }
 
     render() {
+        const { startDateTime } = this.props.event;
         let save;
-
+        let dateTimeFormat = {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+        let dateTimeText = startDateTime ? startDateTime.toLocaleDateString('nb-NO', dateTimeFormat) : '';
         if (this.props.connected) {
             save = <Button text="Save" onPress={() => this.handleSave()}/>;
         }
@@ -81,6 +83,7 @@ export default class EventDetails extends Component {
                     placeholder="Select date / time"
                     autoCapitalize="none"
                     autoCorrect={false}
+                    value = {dateTimeText}
                     onFocus = {() => this.handleDatePressed()}
                 />
                 <TextInput

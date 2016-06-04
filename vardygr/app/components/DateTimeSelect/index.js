@@ -9,6 +9,8 @@ import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 var CalendarPicker = require('react-native-calendar-picker');
 
+console.disableYellowBox = true;
+console.warn('YellowBox is disabled.');
 export default class DateTimeSelect extends Component
 {
     constructor(props){

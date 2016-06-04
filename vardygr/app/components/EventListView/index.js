@@ -35,6 +35,7 @@ export default class EventListView extends Component {
         let dataSource = ds.cloneWithRows(this.props.eventList);
         return (
             <ListView
+                enableEmptySections={true}
                 style={styles.container}
                 dataSource={dataSource}
                 renderRow={(data) => this.renderRow(data)} />
