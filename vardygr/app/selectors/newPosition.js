@@ -9,6 +9,6 @@ export default createSelector([
         eventList.map((event) => {
             eventIdList.push(event._id);
         })
-        return Object.assign({}, position, {eventIds: eventIdList[0]});
+        return Object.assign({}, position, {eventIds: eventIdList});
     }
 );

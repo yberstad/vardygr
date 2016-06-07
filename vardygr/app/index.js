@@ -12,6 +12,7 @@ import EventEditSelectLocation from './containers/EventEditSelectLocation';
 import EventEditSelectParticipants from './containers/EventEditSelectParticipants';
 import EventTracking from './containers/EventTracking'
 import appConnected from './actions/appConnected';
+import appFacebookGetFriends from './actions/appFacebookGetFriends';
 import appCurrentPosition from './actions/appCurrentPosition';
 import loggedInSuccess from './actions/loggedInSuccess';
 import eventGetList from './actions/eventGetList';
@@ -50,6 +51,7 @@ export default class Vardygr extends Component {
                     if (!err) {
                         store.dispatch(loggedInSuccess(res));
                         store.dispatch(eventGetList());
+                        store.dispatch(appFacebookGetFriends());
                         this.startGeoTracking();
                     }
                 });
@@ -94,7 +96,7 @@ export default class Vardygr extends Component {
                                 <Scene key="eventEditSelectParticipants" component={EventEditSelectParticipants} title="Select Participants" />
                             </Scene>
                         </Scene>
-                        <Scene key="eventOverview" component={EventOverview} title="Event Overview" hideNavBar={false} hideTabBar={true} icon={TabIcon}/>
+                        <Scene key="eventOverview" component={EventOverview} title="Event Overview" hideNavBar={false} hideTabBar={false} icon={TabIcon}/>
                         <Scene key="eventTracking" component={EventTracking} title="Event Tracking" hideNavBar={false} hideTabBar={true} icon={TabIcon}/>
                     </Scene>
                 </RouterWithRedux>

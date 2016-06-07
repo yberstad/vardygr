@@ -46,7 +46,7 @@ export default class SignIn extends Component {
 
     onLoginFinished (error, result) {
         if (error) {
-            this.props.signInFacebookFailure(result.error);
+            this.props.signInFacebookFailure(error);
         } else if (result.isCancelled) {
             this.props.signInFacebookFailure(result);
         } else {
@@ -77,31 +77,6 @@ export default class SignIn extends Component {
                     Sign In Screen
                 </Text>
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    value = {this.state.email}
-                    onChangeText={(email) => this.setState({email})}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    value = {this.state.password}
-                    onChangeText={(password) => this.setState({password})}
-                    secureTextEntry={true}
-                />
-
-                <Text style={styles.error}>{this.state.error}</Text>
-
-                <View style={styles.buttons}>
-                    {signIn}
-                    {createAccount}
-                </View>
-
                 <LoginButton
                     readPermissions={['public_profile', 'email', 'user_friends']}
                     onLoginFinished={(error, result) => this.onLoginFinished(error, result)}
@@ -110,3 +85,28 @@ export default class SignIn extends Component {
         );
     }
 }
+
+// <TextInput
+//     style={styles.input}
+//     placeholder="Email"
+//     autoCapitalize="none"
+//     autoCorrect={false}
+//     value = {this.state.email}
+//     onChangeText={(email) => this.setState({email})}
+// />
+// <TextInput
+// style={styles.input}
+// placeholder="Password"
+// autoCapitalize="none"
+// autoCorrect={false}
+// value = {this.state.password}
+// onChangeText={(password) => this.setState({password})}
+// secureTextEntry={true}
+//     />
+//
+//     <Text style={styles.error}>{this.state.error}</Text>
+//
+// <View style={styles.buttons}>
+//     {signIn}
+//     {createAccount}
+// </View>

@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
         case EVENT_GET_LIST_SUCCESS:
             return Object.assign({}, state, { eventList: action.eventList } );
         case EVENT_GET_LIST_AFTER_SAVE_SUCCESS:
-            setTimeout(() => Actions.eventEditOverview({type:'reset'}), 0);
+            setTimeout(() => Actions.eventOverview({type:'reset'}), 0);
             return Object.assign({}, state, { eventList: action.eventList } );
         default:
             return state;

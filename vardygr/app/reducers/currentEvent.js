@@ -21,8 +21,12 @@ var initialState  = {
     participants: [{
         userId: '',
         acknowledged: false,
-        accepted: false,
-        isCoHost: false
+        accepted: false
+    }],
+    coHosts: [{
+        userId: '',
+        acknowledged: false,
+        accepted: false
     }],
     canInviteFriends: false,
     startDateTime: null,
@@ -37,7 +41,6 @@ var initialState  = {
 };
 
 export default (state = initialState, action) => {
-    let participants = [];
     switch (action.type) {
         case EVENT_SET_CURRENT:
             return Object.assign({}, state, {
@@ -68,36 +71,44 @@ export default (state = initialState, action) => {
                 startDateTime: action.startDateTime
             });
         case EVENT_EDIT_SELECT_PARTICIPANTS:
+            let participants = [];
             action.participantList.map((id) => {
-                participants.push({
-                    userId: id,
-                    acknowledged: false,
-                    accepted: false,
-                    isCoHost: false
-                });
-            });
-            return Object.assign({}, state, {
-                participants: participants
-            });
-        case EVENT_EDIT_SELECT_CO_HOSTS:
-            action.coHostList.map((id) => {
                 let participant = _.find(state.participants, (p) => {return p.userId === id});
                 let newParticipant;
                 if(participant){
-                    newParticipant = Object.assign({}, participant, { isCoHost: true} );
+                    newParticipant = Object.assign({}, participant );
                 }
                 else{
                     newParticipant = {
                         userId: id,
                         acknowledged: false,
-                        accepted: false,
-                        isCoHost: true
+                        accepted: false
                     };
                 }
                 participants.push(newParticipant);
             });
             return Object.assign({}, state, {
                 participants: participants
+            });
+        case EVENT_EDIT_SELECT_CO_HOSTS:
+            let coHosts = [];
+            action.coHostList.map((id) => {
+                let coHost = _.find(state.coHosts, (p) => {return p.userId === id});
+                let newCoHost;
+                if(coHost){
+                    newCoHost = Object.assign({}, coHost );
+                }
+                else{
+                    newCoHost = {
+                        userId: id,
+                        acknowledged: false,
+                        accepted: false
+                    };
+                }
+                coHosts.push(newCoHost);
+            });
+            return Object.assign({}, state, {
+                coHosts: coHosts
             });
         default:
             return state;

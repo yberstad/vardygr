@@ -17,6 +17,7 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
+var observer = null;
 
 export default class EventTracking extends Component
 {
@@ -35,9 +36,14 @@ export default class EventTracking extends Component
             zoomEnabled: true
         };
     }
+
     componentWillMount() {
         this.makeSubscription();
         this.observeLocations();
+    }
+
+    componentWillUnmount(){
+        observer.stop();
     }
 
     makeSubscription() {
@@ -49,7 +55,7 @@ export default class EventTracking extends Component
 
     observeLocations() {
         var _this = this;
-        let observer = ddpClient.observe("positions");
+        observer = ddpClient.observe("positions");
         observer.added = (id) => {
             console.log('observe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + this.props.currentEvent._id);
             _this.setState({positions: ddpClient.collections.positions})

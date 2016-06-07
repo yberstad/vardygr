@@ -15,7 +15,13 @@ export default class EventOverview extends Component
 
     handleOk() {
         if (this.validInput()) {
-            Actions.pop();
+            if(this.props.type == 'reset')
+            {
+                Actions.main();
+            }
+            else {
+                Actions.pop();
+            }
         }
     }
 

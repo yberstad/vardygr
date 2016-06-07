@@ -3,29 +3,40 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        marginTop: 60,
+        marginBottom: 60
     },
-    main: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
+    list_container: {
+        flex: 1,
+        marginBottom: 120,
     },
-    input: {
+    separator: {
+        height: 1,
+        backgroundColor: '#CCCCCC',
+    },
+    row_container: {
+        flex: 1,
+        padding: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    row_container_selected: {
+        flex: 1,
+        padding: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#A7A7A7'
+    },
+    row_text: {
+        marginLeft: 12,
+        fontSize: 16,
+    },
+    row_photo: {
         height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginHorizontal: 20,
-        marginVertical: 5,
-        padding: 5
+        width: 40,
+        borderRadius: 20,
     },
     buttons: {
         flexDirection: 'row'
     },
-    error: {
-        color: 'red',
-        height: 20
-    }
 });
-
-

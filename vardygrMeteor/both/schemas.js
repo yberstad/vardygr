@@ -36,7 +36,16 @@ Events.schema = new SimpleSchema({
     "participants.$.accepted": {
         type: Boolean
     },
-    "participants.$.isCoHost": {
+    coHosts: {
+        type: [Object]
+    },
+    "coHosts.$.userId": {
+        type: String
+    },
+    "coHosts.$.acknowledged": {
+        type: Boolean
+    },
+    "coHosts.$.accepted": {
         type: Boolean
     },
     canInviteFriends: {
@@ -73,9 +82,9 @@ Events.schema = new SimpleSchema({
     }
 });
 
-Positions = new Mongo.Collection('positions');
+Positions = new Mongo.Collection('positions'); 
 Positions.schema = new SimpleSchema({
-    eventIds: {type: String},
+    eventIds: {type: [String]},
     location: {
         type: Object,
         index: '2dsphere'

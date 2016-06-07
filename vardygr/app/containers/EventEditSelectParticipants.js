@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 import FriendSelect from '../components/FriendSelect';
 import eventEditSelectParticipants from '../actions/eventEditSelectParticipants';
 import { bindActionCreators } from 'redux';
-import participantsToFriendSelect from '../selectors/participantsToFriendSelect';
+import { createStructuredSelector } from 'reselect';
+import selectedFriends from '../selectors/participantsToFriendSelect';
+import appState from '../selectors/appState';
+
+const selectors = {
+    selectedFriends,
+    appState
+}
 
 export default class EventEditSelectParticipantsContainer extends Component {
     render(){
@@ -11,17 +18,10 @@ export default class EventEditSelectParticipantsContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        selectedFriends: participantsToFriendSelect,
-        connected: state.get('app').connected
-    }
-};
-
 const mapDispatchToProps = (dispatch) => {
     return {
         selectFriends: bindActionCreators(eventEditSelectParticipants, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventEditSelectParticipantsContainer);
+export default connect(createStructuredSelector(selectors), mapDispatchToProps)(EventEditSelectParticipantsContainer);
