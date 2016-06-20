@@ -90,10 +90,10 @@ export default class Vardygr extends Component {
                             <Scene key="home" component={HomeContainer} title="Home" hideNavBar={false} hideTabBar={false} icon={TabIcon}/>
                             <Scene key="event"  title="Create Event" icon={TabIcon} >
                                 <Scene key="eventEdit" component={EventEdit} title="Create Event"/>
-                                <Scene key="eventEditSelectCoHosts" component={EventEditSelectCoHosts} title="Select Co-Hosts" />
-                                <Scene key="eventEditSelectDateTime" component={EventEditSelectDateTime} title="Select Date / Time" />
-                                <Scene key="eventEditSelectLocation" component={EventEditSelectLocation} title="Select Location" />
-                                <Scene key="eventEditSelectParticipants" component={EventEditSelectParticipants} title="Select Participants" />
+                                <Scene key="eventEditSelectCoHosts" component={EventEditSelectCoHosts} title="Select Co-Hosts" hideTabBar={true}/>
+                                <Scene key="eventEditSelectDateTime" component={EventEditSelectDateTime} title="Select Date / Time" hideTabBar={true}/>
+                                <Scene key="eventEditSelectLocation" component={EventEditSelectLocation} title="Select Location" hideTabBar={true}/>
+                                <Scene key="eventEditSelectParticipants" component={EventEditSelectParticipants} title="Select Participants" hideTabBar={true}/>
                             </Scene>
                         </Scene>
                         <Scene key="eventOverview" component={EventOverview} title="Event Overview" hideNavBar={false} hideTabBar={false} icon={TabIcon}/>

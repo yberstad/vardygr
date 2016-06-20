@@ -9,6 +9,12 @@ import Button from '../Button';
 import styles from './styles';
 import { Actions } from 'react-native-router-flux';
 
+const FBSDK = require('react-native-fbsdk');
+const {
+    AppInviteDialog,
+    AppInviteContent
+} = FBSDK;
+
 export default class EventDetails extends Component {
 
     state = {
@@ -16,7 +22,19 @@ export default class EventDetails extends Component {
         description: '',
         canInviteFriends: false,
         displayPositionOfCreator: true,
-        displayPositionForAllParticipants: true
+        displayPositionForAllParticipants: true,
+        canShowInvite: false
+    }
+
+    componentWillMount(){
+        AppInviteDialog.canShow().then(
+            () => {
+                this.setState({ canShowInvite: true });
+            },
+            () => {
+                this.setState({ canShowInvite: false });
+
+            })
     }
 
     validInput() {
@@ -43,6 +61,22 @@ export default class EventDetails extends Component {
         Actions.eventEditSelectDateTime();
     }
 
+    handleInvite(){
+
+        AppInviteDialog.show({applinkUrl: 'https://fb.me/1737187526552555'})
+            .then((data)=> {
+                console.log(data);
+            },
+            (data, error) =>{
+                console.log(data);
+                console.log(error);
+            });
+    }
+
+    handleDatePressed(){
+        Actions.eventEditSelectDateTime();
+    }
+
     handleLocationPressed(){
         Actions.eventEditSelectLocation();
     }
@@ -54,11 +88,17 @@ export default class EventDetails extends Component {
     render() {
         const { startDateTime } = this.props.event;
         let save;
+        let invite;
         let dateTimeFormat = {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
         let dateTimeText = startDateTime ? startDateTime.toLocaleDateString('nb-NO', dateTimeFormat) : '';
         if (this.props.connected) {
             save = <Button text="Save" onPress={() => this.handleSave()}/>;
         }
+
+        if (this.state.canShowInvite) {
+            invite = <Button text="Invite" onPress={() => this.handleInvite()}/>;
+        }
+
 
         return (
             <View style={styles.container}>
@@ -113,6 +153,7 @@ export default class EventDetails extends Component {
 
                 <View style={styles.buttons}>
                     {save}
+                    {invite}
                 </View>
             </View>
         );

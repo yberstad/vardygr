@@ -12,7 +12,20 @@ Meteor.methods({
         if (!Meteor.userId()) {
             return null;
         }
-        return Events.find({ "participants.userId": Meteor.userId()}).fetch();
+        var user = Meteor.users.findOne({"_id": Meteor.userId()});
+        return Events.find({
+                "participants": {
+                    $elemMatch:
+                    {
+                        $or: [
+                            { userId:  Meteor.userId() },
+                            { userId:  user.services.facebook.id }
+                        ]
+                    }
+                }
+            }
+        ).fetch();
+        //return Events.find({ $elemMatch: { $or: [ {"participants.userId": Meteor.userId()}, {"participants.$userId": user.services.facebook.id}] }}).fetch();
     }
 });
 
@@ -22,6 +35,15 @@ Meteor.methods({
             return null;
         }
         return Meteor.users.find({ });
+    }
+});
+
+Meteor.methods({
+    'getUser': function() {
+        if (!Meteor.userId()) {
+            return null;
+        }
+        return Meteor.user();
     }
 });
 
@@ -43,14 +65,14 @@ Meteor.methods({
     }
 });
 
-Meteor.publish('positions', function(eventId) {
+Meteor.publish('positions', function(eventIdList) {
     if (!this.userId) {
         return this.ready();
     }
     const sub = this;
     let initializing = true;
     const pipeline = [
-        {$match: {eventIds: eventId}},
+        {$match: {eventIds: eventIdList}},
         {$sort: {createdBy: 1, timestamp: 1}},
         {$group: {
             _id: "$createdBy",

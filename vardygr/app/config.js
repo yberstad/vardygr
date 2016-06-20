@@ -4,12 +4,13 @@ const getDB = (env) => {
         case 'prod':
         case 'staging':
             return {
-                url: '' // Websocket URL for your app. For a meteor app use `wss://vardygr-app.meteorapp.com/websocket`
+                url: 'http://georequest-app.meteorapp.com' // Websocket URL for your app. For a meteor app use `wss://vardygr-app.meteorapp.com/websocket`
             }
         case 'dev':
         default:
             return {
-                //host: 'vardygr-app.meteorapp.com',
+                //host: 'vardygr.meteorapp.com',
+                //port: '80'
                 host: 'localhost',
                 port: '3000'
             }

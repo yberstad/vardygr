@@ -4,7 +4,7 @@ import { watchSignUpWithEmail } from './signUpWithEmail';
 import { watchSignInWithFacebook } from './signInWithFacebook';
 import { watchSignOutWithFacebook } from './signOutWithFacebook';
 import { watchSaveEvent } from './saveEvent';
-import { watchEventGetList } from './getEventList';
+import { watchEventGetList, watchHomeRoute } from './getEventList';
 import { watchAddPosition } from './addPosition';
 import { watchGetFacebookFriends } from './getFacebookFriends';
 /*
@@ -19,6 +19,7 @@ export default function *root() {
         fork(watchSignOutWithFacebook),
         fork(watchEventGetList),
         fork(watchAddPosition),
-        fork(watchGetFacebookFriends)
+        fork(watchGetFacebookFriends),
+        fork(watchHomeRoute)
     ];
 }
