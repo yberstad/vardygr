@@ -1,6 +1,6 @@
 import  ddpClient from './ddp';
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 'react-native-router-flux';
 import SignInContainer from './containers/SignIn';
 import HomeContainer from './containers/Home'
@@ -31,6 +31,12 @@ class TabIcon extends React.Component {
 }
 const RouterWithRedux = connect()(Router);
 const store = configureStore();
+
+//var BackgroundGeolocation = Platform.select({
+//    ios: () => require('react-native-background-geolocation'),
+//    android: () => require('react-native-background-geolocation-android'),
+//})();
+
 var BackgroundGeolocation = require('react-native-background-geolocation');
 
 BackgroundGeolocation.configure(geoLoationConfig());

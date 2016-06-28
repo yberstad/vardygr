@@ -1,16 +1,21 @@
 package com.vardygr;
 
+import com.transistorsoft.rnbackgroundgeolocation.*;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactActivity;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.AirMaps.AirPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends ReactActivity {
+import android.content.Intent;     // <--- import
 
+import com.facebook.CallbackManager;
+
+public class MainActivity extends ReactActivity {
+    CallbackManager mCallbackManager;
     /**
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.
@@ -35,10 +40,19 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected List<ReactPackage> getPackages() {
-        return Arrays.<ReactPackage>asList(
-            new MainReactPackage(),
-            new FBSDKPackage(),
-            new AirPackage()
-        );
+        mCallbackManager = new CallbackManager.Factory().create();
+        ReactPackage packages[] = new ReactPackage[]{
+                new RNBackgroundGeolocation(this),
+                new MapsPackage(this),
+                new MainReactPackage(),
+                new FBSDKPackage(mCallbackManager),
+        };
+        return Arrays.<ReactPackage>asList(packages);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

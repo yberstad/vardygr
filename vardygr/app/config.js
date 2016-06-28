@@ -11,7 +11,7 @@ const getDB = (env) => {
             return {
                 //host: 'vardygr.meteorapp.com',
                 //port: '80'
-                host: 'localhost',
+                host: '192.168.43.91',
                 port: '3000'
             }
     }
@@ -31,6 +31,7 @@ export default opts;
 
 export function geoLoationConfig() {
     return {
+        //license: '4bbb513c013111eae951647fd4f9e79f127fce6f7a00e9d327db9ea2a053a0df',
         desiredAccuracy: 0,
         stationaryRadius: 1,
         distanceFilter: 1,
