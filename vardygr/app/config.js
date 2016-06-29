@@ -11,7 +11,7 @@ const getDB = (env) => {
             return {
                 //host: 'vardygr.meteorapp.com',
                 //port: '80'
-                host: '192.168.43.91',
+                host: '10.20.0.133',
                 port: '3000'
             }
     }

@@ -43,7 +43,7 @@ public class MainActivity extends ReactActivity {
         mCallbackManager = new CallbackManager.Factory().create();
         ReactPackage packages[] = new ReactPackage[]{
                 new RNBackgroundGeolocation(this),
-                new MapsPackage(this),
+                new MapsPackage(),
                 new MainReactPackage(),
                 new FBSDKPackage(mCallbackManager),
         };
