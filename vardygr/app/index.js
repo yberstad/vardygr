@@ -37,7 +37,7 @@ const store = configureStore();
 //    android: () => require('react-native-background-geolocation-android'),
 //})();
 
-var BackgroundGeolocation = require('react-native-background-geolocation');
+var BackgroundGeolocation = require('react-native-background-geolocation-android');
 
 BackgroundGeolocation.configure(geoLoationConfig());
 

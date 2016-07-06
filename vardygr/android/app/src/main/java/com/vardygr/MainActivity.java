@@ -3,6 +3,7 @@ package com.vardygr;
 import com.transistorsoft.rnbackgroundgeolocation.*;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactActivity;
+import com.transistorsoft.rnbackgroundgeolocation.RNBackgroundGeolocation;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -42,9 +43,9 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         mCallbackManager = new CallbackManager.Factory().create();
         ReactPackage packages[] = new ReactPackage[]{
-                new RNBackgroundGeolocation(this),
-                new MapsPackage(),
+                new MapsPackage(this),
                 new MainReactPackage(),
+                new RNBackgroundGeolocation(this),
                 new FBSDKPackage(mCallbackManager),
         };
         return Arrays.<ReactPackage>asList(packages);
