@@ -31,7 +31,7 @@ export default opts;
 
 export function geoLoationConfig() {
     return {
-        //license: '4bbb513c013111eae951647fd4f9e79f127fce6f7a00e9d327db9ea2a053a0df',
+        license: 'dbfe704707b5bde746ca0cf0e5f4971b834b927d1572fbe2eee5f574b9893c0c',
         desiredAccuracy: 0,
         stationaryRadius: 1,
         distanceFilter: 1,
