@@ -56,10 +56,7 @@ export default class EventDetails extends Component {
             Actions.main();
         }
     }
-    
-    handleDatePressed(){
-        Actions.eventEditSelectDateTime();
-    }
+
 
     handleInvite(){
 
@@ -73,17 +70,6 @@ export default class EventDetails extends Component {
             });
     }
 
-    handleDatePressed(){
-        Actions.eventEditSelectDateTime();
-    }
-
-    handleLocationPressed(){
-        Actions.eventEditSelectLocation();
-    }
-
-    handleParticipantsPressed(){
-        Actions.eventEditSelectParticipants();
-    }
 
     render() {
         const { startDateTime } = this.props.event;
@@ -96,7 +82,7 @@ export default class EventDetails extends Component {
         }
 
         if (this.state.canShowInvite) {
-            invite = <Button text="Invite" onPress={() => this.handleInvite()}/>;
+            invite = <Button text="App Invite" onPress={() => this.handleInvite()}/>;
         }
 
 
@@ -118,43 +104,28 @@ export default class EventDetails extends Component {
                     value = {this.state.description}
                     onChangeText={(description) => this.setState({description})}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Select date / time"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    value = {dateTimeText}
-                    onFocus = {() => this.handleDatePressed()}
+                <Button
+                    text="Select date / time"
+                    onPress = {() => Actions.eventEditSelectDateTime()}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Select position"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    onFocus={() => this.handleLocationPressed()}
+                <Button
+                    text="Select position"
+                    onPress={() => Actions.eventEditSelectLocation()}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Select participants"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    onFocus={() => this.handleParticipantsPressed()}
+                <Button
+                    text="Select participants"
+                    onPress={() => Actions.eventEditSelectParticipants()}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Select coHosts"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    onFocus={() => Actions.eventEditSelectCoHosts()}
+                <Button
+                    text="Select coHosts"
+                    onPress={() => Actions.eventEditSelectCoHosts()}
                 />
 
 
                 <Text style={styles.error}>{this.state.error}</Text>
 
-                <View style={styles.buttons}>
-                    {save}
-                    {invite}
-                </View>
+                {save}
+                {invite}
             </View>
         );
     }

@@ -106,9 +106,7 @@ export default class FriendSelect extends Component {
                     renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
                     renderRow={(data, sectionID, rowID) => this.renderRow(data, sectionID, rowID)} />
 
-                <View style={styles.buttons}>
-                    {ok}
-                </View>
+                {ok}
             </View>
         );
     }

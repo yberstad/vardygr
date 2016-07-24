@@ -7,10 +7,10 @@ import {
 import Button from '../Button';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
-var CalendarPicker = require('react-native-calendar-picker');
+//var CalendarPicker = require('react-native-calendar-picker');
 
-console.disableYellowBox = true;
-console.warn('YellowBox is disabled.');
+//console.disableYellowBox = true;
+//console.warn('YellowBox is disabled.');
 export default class DateTimeSelect extends Component
 {
     constructor(props){
@@ -55,10 +55,8 @@ export default class DateTimeSelect extends Component
                         onDateChange={(date) => this.onDateChange(date)}
                         minuteInterval={10}
                     />
-                
-                <View style={styles.buttons}>
-                    {ok}
-                </View>
+
+                {ok}
             </View>
         );
     }

@@ -7,6 +7,7 @@ import {
     Text,
     TouchableOpacity,
     Animated } from 'react-native';
+import Button from '../Button';
 import styles from './styles';
 import { Actions } from 'react-native-router-flux';
 var MapView = require('react-native-maps');
@@ -81,6 +82,12 @@ export default class LocationSelect extends Component
     }
 
     render(){
+        let ok;
+
+        if (this.props.connected) {
+            ok = <Button text="OK" onPress={() => this.handleOk()}/>;
+        }
+
         return (
             <View style={styles.container}>
                 <MapView.Animated
@@ -96,18 +103,7 @@ export default class LocationSelect extends Component
                     />
                 </MapView.Animated>
 
-                <View style={[styles.bubble, styles.latlng]}>
-                    <Text style={{ textAlign: 'center'}}>
-                        {this.getRegionAsText()}
-                    </Text>
-                </View>
-
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => this.handleOk()} style={[styles.bubble, styles.button]}>
-                        <Text>Use current position</Text>
-                    </TouchableOpacity>
-                </View>
-
+                {ok}
             </View>
         );
     }

@@ -1,9 +1,7 @@
 import ddpClient from '../ddp';
-import { 
-    EVENT_GET_LIST,
-    ROUTE_HOME } from '../constants/actions';
+import { EVENT_GET_LIST } from '../constants/actions';
 import { takeLatest } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import eventGetListFailure from '../actions/eventGetListFailure';
 import eventGetListSuccess from '../actions/eventGetListSuccess';
 
@@ -19,8 +17,4 @@ function* getEventList() {
 
 export function* watchEventGetList() {
     yield* takeLatest(EVENT_GET_LIST, getEventList)
-}
-
-export function* watchHomeRoute() {
-    yield* takeLatest(ROUTE_HOME, getEventList)
 }

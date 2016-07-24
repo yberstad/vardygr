@@ -5,7 +5,11 @@ export default StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         backgroundColor: '#A7A7A7',
-        margin: 5
+        marginHorizontal: 20,
+        marginVertical: 5,
+        alignSelf: 'stretch',
     },
-    buttonText: {}
+    buttonText: {
+        textAlign: 'center',
+    }
 });

@@ -1,10 +1,11 @@
 import { fork } from 'redux-saga/effects';
+import { watchLoggedInSuccess } from './initAfterSignInSuccess';
 import { watchSignInWithEmail } from './signInWithEmail';
 import { watchSignUpWithEmail } from './signUpWithEmail';
 import { watchSignInWithFacebook } from './signInWithFacebook';
 import { watchSignOutWithFacebook } from './signOutWithFacebook';
 import { watchSaveEvent } from './saveEvent';
-import { watchEventGetList, watchHomeRoute } from './getEventList';
+import { watchEventGetList } from './getEventList';
 import { watchAddPosition } from './addPosition';
 import { watchGetFacebookFriends } from './getFacebookFriends';
 /*
@@ -12,6 +13,7 @@ import { watchGetFacebookFriends } from './getFacebookFriends';
  */
 export default function *root() {
     yield [
+        fork(watchLoggedInSuccess),
         fork(watchSignInWithEmail),
         fork(watchSignUpWithEmail),
         fork(watchSaveEvent),
@@ -20,6 +22,5 @@ export default function *root() {
         fork(watchEventGetList),
         fork(watchAddPosition),
         fork(watchGetFacebookFriends),
-        fork(watchHomeRoute)
     ];
 }

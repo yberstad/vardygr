@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -20,6 +21,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		4927BBD9D8354AF5B566CB53 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A5A60ABA0D4404ADDDE4A5 /* libRCTActionSheet.a */; };
 		561598A553F04679A46176A8 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADC53AAC3E748B58FC5F156 /* libAirMaps.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A6E69A9C6B05411590FD158F /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C331CABCD842C69FD2E5BF /* libRCTFBSDK.a */; };
@@ -32,7 +34,6 @@
 		EC5175CA1D07210C00C7ECE1 /* libRNBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5175C71D071E8E00C7ECE1 /* libRNBackgroundGeolocation.a */; };
 		ECFE9FBE1CFB984200CBEFAC /* TSLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFE9FBD1CFB984200CBEFAC /* TSLocationManager.framework */; };
 		ECFE9FC01CFB987400CBEFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFE9FBF1CFB987400CBEFAC /* libsqlite3.tbd */; };
-		4927BBD9D8354AF5B566CB53 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A5A60ABA0D4404ADDDE4A5 /* libRCTActionSheet.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,20 @@
 			remoteGlobalIDString = 83FF5F901AFD0D2B0016A13E;
 			remoteInfo = RNBackgroundGeolocationTests;
 		};
+		ECFC5B2A1D44A6F3003A86C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B2D07AC3C9A4BB3AE10D02A /* CalendarPicker2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 13B07F961A680F5B00A75B9A;
+			remoteInfo = CalendarPicker2;
+		};
+		ECFC5B2C1D44A6F3003A86C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B2D07AC3C9A4BB3AE10D02A /* CalendarPicker2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 00E356EE1AD99517003FC87E;
+			remoteInfo = CalendarPicker2Tests;
+		};
 		ECFE9FCF1CFB9D7900CBEFAC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C482D0680D04B26B9D49EDC /* AirMaps.xcodeproj */;
@@ -154,6 +169,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* vardygrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vardygrTests.m; sourceTree = "<group>"; };
 		0ADC53AAC3E748B58FC5F156 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
+		0B2D07AC3C9A4BB3AE10D02A /* CalendarPicker2.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CalendarPicker2.xcodeproj; path = "../node_modules/react-native-calendar-picker/ios/CalendarPicker2.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* vardygr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vardygr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +184,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		BD3770FC346C4471914CC929 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/iOS/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
+		C0A5A60ABA0D4404ADDDE4A5 /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = "<group>"; };
 		C5C331CABCD842C69FD2E5BF /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		EC342B611CFEBB77003DEA9E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EC342B621CFEBB77003DEA9E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -178,8 +195,6 @@
 		EC5175C11D071E8E00C7ECE1 /* RNBackgroundGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundGeolocation.xcodeproj; path = "../node_modules/react-native-background-geolocation/RNBackgroundGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		ECFE9FBD1CFB984200CBEFAC /* TSLocationManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSLocationManager.framework; path = "../node_modules/react-native-background-geolocation/RNBackgroundGeolocation/TSLocationManager.framework"; sourceTree = "<group>"; };
 		ECFE9FBF1CFB987400CBEFAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		0B2D07AC3C9A4BB3AE10D02A /* CalendarPicker2.xcodeproj */ = {isa = PBXFileReference; name = "CalendarPicker2.xcodeproj"; path = "../node_modules/react-native-calendar-picker/ios/CalendarPicker2.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		C0A5A60ABA0D4404ADDDE4A5 /* libRCTActionSheet.a */ = {isa = PBXFileReference; name = "libRCTActionSheet.a"; path = "libRCTActionSheet.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +422,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		ECFC5B251D44A6F3003A86C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECFC5B2B1D44A6F3003A86C7 /* CalendarPicker2.app */,
+				ECFC5B2D1D44A6F3003A86C7 /* CalendarPicker2Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		ECFE9FCC1CFB9D7900CBEFAC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +517,10 @@
 				{
 					ProductGroup = ECFE9FCC1CFB9D7900CBEFAC /* Products */;
 					ProjectRef = 5C482D0680D04B26B9D49EDC /* AirMaps.xcodeproj */;
+				},
+				{
+					ProductGroup = ECFC5B251D44A6F3003A86C7 /* Products */;
+					ProjectRef = 0B2D07AC3C9A4BB3AE10D02A /* CalendarPicker2.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -641,6 +669,20 @@
 			fileType = wrapper.cfbundle;
 			path = RNBackgroundGeolocationTests.xctest;
 			remoteRef = EC5175C81D071E8E00C7ECE1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ECFC5B2B1D44A6F3003A86C7 /* CalendarPicker2.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CalendarPicker2.app;
+			remoteRef = ECFC5B2A1D44A6F3003A86C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ECFC5B2D1D44A6F3003A86C7 /* CalendarPicker2Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CalendarPicker2Tests.xctest;
+			remoteRef = ECFC5B2C1D44A6F3003A86C7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ECFE9FD01CFB9D7900CBEFAC /* libAirMaps.a */ = {

@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'flex-start'
     },
     main: {
         fontSize: 20,
@@ -17,7 +17,8 @@ export default StyleSheet.create({
         borderWidth: 1,
         marginHorizontal: 20,
         marginVertical: 5,
-        padding: 5
+        padding: 5,
+        alignSelf: 'stretch',
     },
     buttons: {
         flexDirection: 'row'
