@@ -2,8 +2,14 @@
     <style name="RNSplashScreen_SplashAnimation">
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/appicon</item>
+        <item name="android:windowAnimationStyle">@style/RNSplashScreen_SplashAnimation</item>
+    </style>
+
+    <style name="RNSplashScreen_SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/appicon</item>
         <item name="android:windowAnimationStyle">@style/RNSplashScreen_SplashAnimation</item>
     </style>

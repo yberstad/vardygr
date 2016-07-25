@@ -64,11 +64,18 @@ export default class LocationSelect extends Component
     onMapPress(e) {
         console.log(e.nativeEvent.coordinate);
 
-        var { marker } = this.state;
-        marker.timing({
-            longitude: e.nativeEvent.coordinate.longitude,
-            latitude: e.nativeEvent.coordinate.latitude
-        }).start();
+        // var { marker } = this.state;
+        // marker.timing({
+        //     longitude: e.nativeEvent.coordinate.longitude,
+        //     latitude: e.nativeEvent.coordinate.latitude
+        // }).start();
+
+        var marker = {
+                longitude: e.nativeEvent.coordinate.longitude,
+                latitude: e.nativeEvent.coordinate.latitude
+            };
+        
+        this.setState({marker});
     }
 
 
