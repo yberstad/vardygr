@@ -1,6 +1,8 @@
 import { put } from 'redux-saga/effects';
-import eventGetList from '../actions/eventGetList';
+import SplashScreen from "rn-splash-screen";
+
 
 export default function* startup() {
-    //yield put(eventGetList);
+    // Hide the active splash screen
+    //yield put(SplashScreen.hide());
 }

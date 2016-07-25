@@ -25,16 +25,16 @@ export default class LocationSelect extends Component
         super(props);
 
         this.state = {
-            marker: new Animated.Region({
+            marker: {
                 longitude: props.longitude,
                 latitude: props.latitude
-            }),
-            region: new Animated.Region({
+            },
+            region: {
                 longitude: props.longitude,
                 latitude: props.latitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA
-            }),
+            },
             zoomEnabled: true,
             initialPosition: 'unknown',
             lastPosition: 'unknown'
@@ -90,7 +90,7 @@ export default class LocationSelect extends Component
 
         return (
             <View style={styles.container}>
-                <MapView.Animated
+                <MapView
                     ref="map"
                     style={styles.map}
                     region={this.getRegion()}
@@ -101,7 +101,7 @@ export default class LocationSelect extends Component
                     <MapView.Marker.Animated
                         coordinate={this.state.marker}
                     />
-                </MapView.Animated>
+                </MapView>
 
                 {ok}
             </View>

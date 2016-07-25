@@ -2,6 +2,7 @@ import ddpClient from './ddp';
 import React, { Component } from 'react';
 import { Text, Platform, BackAndroid, StyleSheet } from 'react-native';
 import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 'react-native-router-flux';
+import LaunchContainer from './containers/Launch';
 import SignInContainer from './containers/SignIn';
 import HomeContainer from './containers/Home'
 import EventEdit from './containers/EventEdit'
@@ -16,6 +17,8 @@ import loggedInSuccess from './actions/loggedInSuccess';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import { connect } from 'react-redux';
+import SplashScreen from 'rn-splash-screen';
+
 //import TabIcon from './components/TabIcon';
 
 class TabIcon extends React.Component {
@@ -59,6 +62,7 @@ export default class Vardygr extends Component {
                 });
             }
         });
+        SplashScreen.hide();
     }
     
 
@@ -77,8 +81,8 @@ export default class Vardygr extends Component {
             <Provider store={store}>
                 <RouterWithRedux>
                     <Scene key="root" hideNavBar={true} hideTabBar={true}>
-                        <Scene key="signIn" component={SignInContainer} title="Sign" initial={true} />
-                        <Scene key="main" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle}>
+                        <Scene key="signIn" component={SignInContainer} title="Sign" />
+                        <Scene key="main" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle} initial={true}>
                             <Scene key="home" component={HomeContainer} title="Home" hideNavBar={false} hideTabBar={false} icon={TabIcon}/>
                             <Scene key="event"  title="Create Event" icon={TabIcon} >
                                 <Scene key="eventEdit" component={EventEdit} title="Create Event"/>
@@ -96,3 +100,4 @@ export default class Vardygr extends Component {
         )
     }
 }
+//                        <Scene key="launch" component={LaunchContainer} title="Launch" initial={true} style={{flex:1, backgroundColor:'transparent'}}/>

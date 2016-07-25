@@ -27,12 +27,18 @@ export default class EventTracking extends Component
         this.state = {
             markers: [],
             positions: null,
-            region: new Animated.Region({
+            // region: new Animated.Region({
+            //     longitude: props.currentEvent.location.coordinates[0],
+            //     latitude: props.currentEvent.location.coordinates[1],
+            //     latitudeDelta: LATITUDE_DELTA,
+            //     longitudeDelta: LONGITUDE_DELTA
+            // }),
+            region: {
                 longitude: props.currentEvent.location.coordinates[0],
                 latitude: props.currentEvent.location.coordinates[1],
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA
-            }),
+            },
             zoomEnabled: true
         };
     }
@@ -97,7 +103,7 @@ export default class EventTracking extends Component
     render(){
         return (
             <View style={styles.container}>
-                <MapView.Animated
+                <MapView
                     ref="map"
                     style={styles.map}
                     region={this.state.region}
@@ -112,7 +118,7 @@ export default class EventTracking extends Component
                             key={marker.id}
                         />
                     ))}
-                </MapView.Animated>
+                </MapView>
             </View>
         );
     }

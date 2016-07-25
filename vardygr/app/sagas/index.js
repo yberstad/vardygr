@@ -1,4 +1,5 @@
 import { fork } from 'redux-saga/effects';
+//import startup  from './startup';
 import { watchLoggedInSuccess } from './initAfterSignInSuccess';
 import { watchSignInWithEmail } from './signInWithEmail';
 import { watchSignUpWithEmail } from './signUpWithEmail';
@@ -22,5 +23,6 @@ export default function *root() {
         fork(watchEventGetList),
         fork(watchAddPosition),
         fork(watchGetFacebookFriends),
+        //fork(startup)
     ];
 }
