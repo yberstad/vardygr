@@ -21,7 +21,11 @@ import java.util.List;
 import io.fabric.sdk.android.Fabric;
 
 public class MainApplication extends Application implements ReactApplication {
-    CallbackManager mCallbackManager;
+    private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+    protected static CallbackManager getCallbackManager() {
+        return mCallbackManager;
+    }
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
         protected boolean getUseDeveloperSupport() {
@@ -30,7 +34,6 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            mCallbackManager = new CallbackManager.Factory().create();
             ReactPackage packages[] = new ReactPackage[]{
                     new MapsPackage(),
                     new MainReactPackage(),
@@ -51,7 +54,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        //Fabric.with(this, new Crashlytics());
+        Fabric.with(this, new Crashlytics());
         // Initialize the SDK before executing any other operations,
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);

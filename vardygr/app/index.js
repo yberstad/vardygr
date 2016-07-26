@@ -59,6 +59,9 @@ export default class Vardygr extends Component {
                     if (!err) {
                         store.dispatch(loggedInSuccess(res));
                     }
+                    else{
+                        Actions.signIn({type: 'reset'});
+                    }
                 });
             }
         });

@@ -17,7 +17,7 @@ export default class EventListView extends Component {
 
     renderRow(rowData)
     {
-        var imageUrl =  'https://graph.facebook.com/' + 1028115007225766 + '/picture?type=square';
+        var imageUrl =  'https://graph.facebook.com/' + rowData.createdByFacebookId + '/picture?type=square';
 
         return (
             <TouchableHighlight onPress={() => this.rowPressed(rowData._id)} underlayColor='#dddddd'>

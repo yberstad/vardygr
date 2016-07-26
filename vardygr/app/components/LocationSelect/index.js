@@ -48,8 +48,8 @@ export default class LocationSelect extends Component
     handleOk() {
         if (this.validInput()) {
             this.props.selectLocation(
-                this.state.marker.longitude._value,
-                this.state.marker.latitude._value,
+                this.state.marker.longitude,
+                this.state.marker.latitude,
                 this.state.region.longitudeDelta,
                 this.state.region.latitudeDelta,
             );

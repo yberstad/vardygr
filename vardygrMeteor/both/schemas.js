@@ -77,6 +77,10 @@ Events.schema = new SimpleSchema({
     createdBy: {
         type: String
     },
+    createdByFacebookId: {
+        type: String,
+        optional: true
+    },
     timestamp: {
         type: Date
     }

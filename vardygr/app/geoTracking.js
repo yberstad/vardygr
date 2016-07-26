@@ -26,13 +26,15 @@ export function startGeoTracking()
 
         // This handler fires whenever bgGeo receives a location update.
         BackgroundGeolocation.on('location', function (location) {
-            store.dispatch(positionAdd(location.coords.longitude, location.coords.latitude))
+            console.log('BackgroundGeolocation on-method received current position: ', JSON.stringify(location));
+            store.dispatch(positionAdd(location.coords.longitude, location.coords.latitude));
+            store.dispatch(appCurrentPosition(location.coords.longitude, location.coords.latitude));
         });
 
         // Fetch current position
         BackgroundGeolocation.getCurrentPosition({timeout: 30}, function (location) {
             store.dispatch(appCurrentPosition(location.coords.longitude, location.coords.latitude));
-            console.log('BackgroundGeolocation received current position: ', JSON.stringify(location));
+            console.log('BackgroundGeolocation getCurrentPosition received current position: ', JSON.stringify(location));
             resolve(location);
         }, function (error) {
             console.log('Location error: ' + error);

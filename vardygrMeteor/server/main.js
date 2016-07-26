@@ -49,6 +49,10 @@ Meteor.methods({
 
 Meteor.methods({
     'saveEvent': function(event) {
+        var user = Meteor.users.findOne({"_id": Meteor.userId()});
+        if(user){
+            event.createdByFacebookId = user.services.facebook.id;
+        }
         event.createdBy = (Meteor.userId()) ? Meteor.userId() : '';
         event.timestamp = new Date();
         Events.schema.validate(event);

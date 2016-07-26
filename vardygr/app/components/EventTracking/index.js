@@ -53,9 +53,11 @@ export default class EventTracking extends Component
     }
 
     makeSubscription() {
-        ddpClient.subscribe("positions", [this.props.currentEvent._id] , () => {
-            console.log('subscribe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + this.props.currentEvent._id);
-            this.setState({positions: ddpClient.collections.positions});
+        var _this = this;
+        ddpClient.subscribe("positions", [_this.props.currentEvent._id] , () => {
+            console.log('subscribe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + _this.props.currentEvent._id);
+            _this.setState({positions: ddpClient.collections.positions});
+            _this.setState({markers: _this.getMarkerList(ddpClient.collections.positions)});
         });
     }
 
@@ -63,7 +65,7 @@ export default class EventTracking extends Component
         var _this = this;
         observer = ddpClient.observe("positions");
         observer.added = (id) => {
-            console.log('observe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + this.props.currentEvent._id);
+            console.log('observe-add: ' + JSON.stringify(ddpClient.collections.positions) + ' eventId:n' + _this.props.currentEvent._id);
             _this.setState({positions: ddpClient.collections.positions})
             _this.setState({markers: _this.getMarkerList(ddpClient.collections.positions)});
         }
@@ -90,7 +92,7 @@ export default class EventTracking extends Component
             };
             marker.title = position.createdBy;
             marker.description = position.createdBy;
-            marker.id = position.id;
+            marker.id = position._id;
             list.push(marker);
         }
         return list;

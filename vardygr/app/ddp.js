@@ -116,6 +116,9 @@ ddpClient.loginWithToken = (cb) => {
         params.resume = token;
         ddpClient.call("login", [params], cb);
       }
+      else{
+          cb("no token");
+      }
     });
 };
 
