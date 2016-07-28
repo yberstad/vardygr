@@ -5,11 +5,12 @@ import appCurrentPosition from './actions/appCurrentPosition';
 import positionAdd from './actions/positionAdd';
 import {geoLoationConfig} from './config';
 
-// var BackgroundGeolocation = require('react-native-background-geolocation-android');
-var BackgroundGeolocation = Platform.select({
-   ios: () => require('react-native-background-geolocation'),
-   android: () => require('react-native-background-geolocation-android'),
-})();
+var BackgroundGeolocation = require('react-native-background-geolocation-android');
+
+// const BackgroundGeolocation = Platform.select({
+//     ios: () => require('react-native-background-geolocation'),
+//     android: () => require('react-native-background-geolocation-android'),
+// })();
 
 export function startGeoTracking()
 {

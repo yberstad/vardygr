@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a63395d6-dd52-4370-b5ec-ab53db0ea6dd" name="Default" comment="">
+    <list default="true" id="a63395d6-dd52-4370-b5ec-ab53db0ea6dd" name="Default" comment="Fixes in both android and ios">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vardygr/app/geoTracking.ios.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vardygr/app/geoTracking.js" afterPath="$PROJECT_DIR$/vardygr/app/geoTracking.android.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/app.iml" afterPath="$PROJECT_DIR$/vardygr/android/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/src/main/java/com/vardygr/MainActivity.java" afterPath="$PROJECT_DIR$/vardygr/android/app/src/main/java/com/vardygr/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/src/main/java/com/vardygr/MainApplication.java" afterPath="$PROJECT_DIR$/vardygr/android/app/src/main/java/com/vardygr/MainApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/components/EventListView/index.js" afterPath="$PROJECT_DIR$/vardygr/app/components/EventListView/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/components/EventTracking/index.js" afterPath="$PROJECT_DIR$/vardygr/app/components/EventTracking/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/components/LocationSelect/index.js" afterPath="$PROJECT_DIR$/vardygr/app/components/LocationSelect/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/vardygr/android/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/android/app/src/main/assets/index.android.bundle" afterPath="$PROJECT_DIR$/vardygr/android/app/src/main/assets/index.android.bundle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/config.js" afterPath="$PROJECT_DIR$/vardygr/app/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/ddp.js" afterPath="$PROJECT_DIR$/vardygr/app/ddp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/geoTracking.js" afterPath="$PROJECT_DIR$/vardygr/app/geoTracking.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/app/index.js" afterPath="$PROJECT_DIR$/vardygr/app/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygrMeteor/both/schemas.js" afterPath="$PROJECT_DIR$/vardygrMeteor/both/schemas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygrMeteor/server/main.js" afterPath="$PROJECT_DIR$/vardygrMeteor/server/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/fastlane/report.xml" afterPath="$PROJECT_DIR$/vardygr/fastlane/report.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/ios/vardygr.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/vardygr/ios/vardygr.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/ios/vardygr/Info.plist" afterPath="$PROJECT_DIR$/vardygr/ios/vardygr/Info.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vardygr/ios/vardygrTests/Info.plist" afterPath="$PROJECT_DIR$/vardygr/ios/vardygrTests/Info.plist" />
     </list>
     <ignored path="vardygr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,6 +33,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vardygr/app/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-30">
+              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vardygrMeteor/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vardygr/app/components/EventTracking/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="488">
@@ -65,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vardygr/app/components/EventListView/index.js">
+      <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vardygrMeteor/settings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -78,58 +86,48 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vardygr/app/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="930">
               <caret line="62" column="52" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="geoTracking.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vardygr/app/geoTracking.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="11" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vardygr/app/components/LocationSelect/index.js">
+        <entry file="file://$PROJECT_DIR$/vardygr/app/components/DateTimeSelect/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-292">
-              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+            <state relative-caret-position="90">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventEditSelectLocation.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vardygr/app/containers/EventEditSelectLocation.js">
+      <file leaf-file-name="geoTracking.ios.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vardygr/app/geoTracking.ios.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eventEditSelectLocation.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vardygr/app/actions/eventEditSelectLocation.js">
+      <file leaf-file-name="initAfterSignInSuccess.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vardygr/app/sagas/initAfterSignInSuccess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="currentEvent.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vardygr/app/reducers/currentEvent.js">
+      <file leaf-file-name="geoTracking.android.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vardygr/app/geoTracking.android.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="943">
-              <caret line="105" column="21" selection-start-line="101" selection-start-column="32" selection-end-line="105" selection-end-column="21" />
+            <state relative-caret-position="105">
+              <caret line="7" column="60" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -156,8 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vardygr/app/actions/appGetFacebookFriends.js" />
-        <option value="$PROJECT_DIR$/vardygr/app/actions/appGetFacebookFriendsFailure.js" />
         <option value="$PROJECT_DIR$/vardygr/app/actions/appFacebookGetFriends.js" />
         <option value="$PROJECT_DIR$/vardygr/app/actions/appFacebookGetFriendsFailure.js" />
         <option value="$PROJECT_DIR$/vardygr/app/actions/appFacebookGetFriendsSuccess.js" />
@@ -183,7 +179,6 @@
         <option value="$PROJECT_DIR$/vardygr/app/facebook.js" />
         <option value="$PROJECT_DIR$/vardygr/android/app/app.iml" />
         <option value="$PROJECT_DIR$/vardygr/app/sagas/signInSucessfull.js" />
-        <option value="$PROJECT_DIR$/vardygr/app/sagas/initAfterSignInSuccess.js" />
         <option value="$PROJECT_DIR$/vardygr/app/components/LocationSelect/styles.js" />
         <option value="$PROJECT_DIR$/vardygr/app/components/Button/styles.js" />
         <option value="$PROJECT_DIR$/vardygr/app/components/FriendSelect/index.js" />
@@ -200,13 +195,16 @@
         <option value="$PROJECT_DIR$/vardygr/app/sagas/startup.js" />
         <option value="$PROJECT_DIR$/vardygrMeteor/server/main.js" />
         <option value="$PROJECT_DIR$/vardygrMeteor/both/schemas.js" />
-        <option value="$PROJECT_DIR$/vardygr/app/config.js" />
         <option value="$PROJECT_DIR$/vardygr/app/ddp.js" />
         <option value="$PROJECT_DIR$/vardygr/app/index.js" />
-        <option value="$PROJECT_DIR$/vardygr/app/geoTracking.js" />
         <option value="$PROJECT_DIR$/vardygr/app/components/LocationSelect/index.js" />
         <option value="$PROJECT_DIR$/vardygr/app/components/EventListView/index.js" />
         <option value="$PROJECT_DIR$/vardygr/app/components/EventTracking/index.js" />
+        <option value="$PROJECT_DIR$/vardygr/app/config.js" />
+        <option value="$PROJECT_DIR$/vardygr/app/geoTracking.ios.js" />
+        <option value="$PROJECT_DIR$/vardygr/app/geoTracking.js" />
+        <option value="$PROJECT_DIR$/vardygr/app/sagas/initAfterSignInSuccess.js" />
+        <option value="$PROJECT_DIR$/vardygr/app/geoTracking.android.js" />
       </list>
     </option>
   </component>
@@ -627,6 +625,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DateTimeSelect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vardygr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vardygr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vardygr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="actions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -705,8 +729,8 @@
       <recent name="$PROJECT_DIR$/vardygr/app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/vardygr/node_modules/react-native/Libraries/Animated/src" />
       <recent name="$PROJECT_DIR$/vardygr/app" />
+      <recent name="$PROJECT_DIR$/vardygr/node_modules/react-native/Libraries/Animated/src" />
       <recent name="$PROJECT_DIR$/vardygr/app/selectors" />
       <recent name="$PROJECT_DIR$/vardygr/app/actions" />
       <recent name="$PROJECT_DIR$/vardygr/app/sagas" />
@@ -837,7 +861,7 @@
       <workItem from="1467130835520" duration="4441000" />
       <workItem from="1467180981013" duration="456000" />
       <workItem from="1467715545344" duration="108000" />
-      <workItem from="1467836160439" duration="36499000" />
+      <workItem from="1467836160439" duration="43314000" />
     </task>
     <task id="LOCAL-00001" summary="Added fastlane">
       <created>1463866315988</created>
@@ -1035,11 +1059,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469481151545</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixes in both android and ios">
+      <created>1469566973326</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1469566973326</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230275000" />
+    <option name="totallyTimeSpent" value="237090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1173" extended-state="0" />
@@ -1123,7 +1154,8 @@
     <MESSAGE value="Map is now working on device, but not on emulator" />
     <MESSAGE value="Upgraded to RN 0.30, and added rn-splash-screen." />
     <MESSAGE value="Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
+    <MESSAGE value="Fixes in both android and ios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes in both android and ios" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1162,22 +1194,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vardygr/app/sagas/signInWithEmail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vardygr/app/constants/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vardygr/app/reducers/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1306,14 +1322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vardygr/app/components/DateTimeSelect/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vardygr/app/components/Button/styles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1426,14 +1434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vardygr/app/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vardygr/app/reducers/currentUser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1454,14 +1454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vardygr/app/sagas/initAfterSignInSuccess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1530,22 +1522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vardygr/app/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="62" column="52" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vardygr/app/geoTracking.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="11" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vardygrMeteor/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1566,6 +1542,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="79" column="9" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygrMeteor/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygr/app/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygr/app/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="52" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygr/app/components/DateTimeSelect/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygr/app/geoTracking.ios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygr/app/sagas/initAfterSignInSuccess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vardygr/app/geoTracking.android.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="60" />
           <folding />
         </state>
       </provider>

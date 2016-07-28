@@ -9,10 +9,10 @@ const getDB = (env) => {
         case 'dev':
         default:
             return {
-                // host: 'vardygr.meteorapp.com',
-                // port: '80'
-                host: '192.168.0.25',
-                port: '3000'
+                host: 'vardygr.meteorapp.com',
+                port: '80'
+                // host: '192.168.0.25',
+                // port: '3000'
             }
     }
 };
