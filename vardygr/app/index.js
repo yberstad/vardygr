@@ -91,7 +91,7 @@ export default class Vardygr extends Component {
                                 <Scene key="eventEdit" component={EventEdit} title="Create Event"/>
                                 <Scene key="eventEditSelectCoHosts" component={EventEditSelectCoHosts} title="Select Co-Hosts" hideTabBar={true}/>
                                 <Scene key="eventEditSelectDateTime" component={EventEditSelectDateTime} title="Select Date / Time" hideTabBar={true} />
-                                <Scene key="eventEditSelectLocation" component={EventEditSelectLocation} title="Select Location" hideTabBar={true}/>
+                                <Scene key="eventEditSelectLocation" component={EventEditSelectLocation} title="Select Location" hideTabBar={true} />
                                 <Scene key="eventEditSelectParticipants" component={EventEditSelectParticipants} title="Select Participants" hideTabBar={true}/>
                             </Scene>
                         </Scene>

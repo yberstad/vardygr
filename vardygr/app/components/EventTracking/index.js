@@ -39,7 +39,8 @@ export default class EventTracking extends Component
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA
             },
-            zoomEnabled: true
+            zoomEnabled: true,
+            displayMode: 'PORTRAIT'
         };
     }
 
@@ -102,25 +103,69 @@ export default class EventTracking extends Component
         this.setState({ region });
     }
 
+    onLayoutChanged(event){
+        const { width, height } = event.nativeEvent.layout;
+        const orientation = (width > height) ? 'LANDSCAPE' : 'PORTRAIT';
+        if(orientation == 'LANDSCAPE'){
+            this.getDistancesFromApiAsync(orientation, this.state.region, this.state.markers)
+        }
+        else{
+            this.setState({displayMode: orientation});
+        }
+
+    }
+
+    getDistancesFromApiAsync(orientation, region, markers) {
+        var _this = this;
+        var destination = `${region.latitude}%2C${region.longitude}`;
+        var origins = '';
+        markers.map(marker =>{
+            origins += `${marker.latlng.latitude}%2C${marker.latlng.longitude}%7C`
+        })
+        var url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destination}&key=AIzaSyCRb0RF6LvmZNg9iTUwcQOOTntME8nE2jc`
+        return fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                var elements = [];
+                responseJson.rows.map(item =>{elements.push(item.elements[0])});
+                this.setState({displayMode: orientation, elements: elements});
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     render(){
+        let view = '';
+        if(this.state.displayMode == 'PORTRAIT')
+        {
+            view = <MapView
+                ref="map"
+                style={styles.map}
+                region={this.state.region}
+                onRegionChange={(region) => this.onRegionChange(region)}
+                zoomEnabled={this.state.zoomEnabled}
+            >
+                {this.state.markers.map(marker => (
+                    <MapView.Marker
+                        coordinate={marker.latlng}
+                        title={marker.title}
+                        description={marker.description}
+                        key={marker.id}
+                    />
+                ))}
+            </MapView>
+        }
+        else{
+            let distance = '';
+            this.state.elements.map(element => {
+                distance = `distance: ${element.distance.text} <br /> `
+            })
+            view = <Text>{distance}</Text>
+        }
         return (
-            <View style={styles.container}>
-                <MapView
-                    ref="map"
-                    style={styles.map}
-                    region={this.state.region}
-                    onRegionChange={(region) => this.onRegionChange(region)}
-                    zoomEnabled={this.state.zoomEnabled}
-                >
-                    {this.state.markers.map(marker => (
-                        <MapView.Marker
-                            coordinate={marker.latlng}
-                            title={marker.title}
-                            description={marker.description}
-                            key={marker.id}
-                        />
-                    ))}
-                </MapView>
+            <View style={styles.container} onLayout={(event) => this.onLayoutChanged(event)}>
+                {view}
             </View>
         );
     }

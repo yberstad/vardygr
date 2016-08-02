@@ -1,7 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    container: {
+    container:{
+        flex: 1
+    },
+    map_container: {
+        marginTop: 100,
         position: 'absolute',
         top: 0,
         left: 0,
