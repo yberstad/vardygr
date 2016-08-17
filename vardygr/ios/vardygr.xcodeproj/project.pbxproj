@@ -32,6 +32,9 @@
 		EC3A08371CEF85BF006FB544 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3A08351CEF85BF006FB544 /* Fabric.framework */; };
 		EC3A08381CEF85BF006FB544 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3A08361CEF85BF006FB544 /* Crashlytics.framework */; };
 		EC3E7E991CF0EDF700F41A90 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC3E7E981CF0EDF700F41A90 /* Media.xcassets */; };
+		EC4E6A9A1D6508BA00574428 /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E6A991D6508BA00574428 /* RNBackgroundFetch+AppDelegate.m */; };
+		EC4E6A9B1D65091000574428 /* libRNBackgroundFetch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4E6A961D65087300574428 /* libRNBackgroundFetch.a */; };
+		EC4E6A9D1D65095300574428 /* TSBackgroundFetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4E6A9C1D65095300574428 /* TSBackgroundFetch.framework */; };
 		EC5175CA1D07210C00C7ECE1 /* libRNBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5175C71D071E8E00C7ECE1 /* libRNBackgroundGeolocation.a */; };
 		ECFE9FBE1CFB984200CBEFAC /* TSLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFE9FBD1CFB984200CBEFAC /* TSLocationManager.framework */; };
 		ECFE9FC01CFB987400CBEFAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFE9FBF1CFB987400CBEFAC /* libsqlite3.tbd */; };
@@ -122,6 +125,13 @@
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
 		};
+		EC4E6A951D65087300574428 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC4E6A831D65087300574428 /* RNBackgroundFetch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 835318541D52293F005738CD;
+			remoteInfo = RNBackgroundFetch;
+		};
 		EC5175C61D071E8E00C7ECE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EC5175C11D071E8E00C7ECE1 /* RNBackgroundGeolocation.xcodeproj */;
@@ -202,6 +212,9 @@
 		EC3A08351CEF85BF006FB544 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		EC3A08361CEF85BF006FB544 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		EC3E7E981CF0EDF700F41A90 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		EC4E6A831D65087300574428 /* RNBackgroundFetch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundFetch.xcodeproj; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/RNBackgroundFetch.xcodeproj"; sourceTree = "<group>"; };
+		EC4E6A991D6508BA00574428 /* RNBackgroundFetch+AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RNBackgroundFetch+AppDelegate.m"; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/RNBackgroundFetch/RNBackgroundFetch+AppDelegate.m"; sourceTree = "<group>"; };
+		EC4E6A9C1D65095300574428 /* TSBackgroundFetch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSBackgroundFetch.framework; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/TSBackgroundFetch.framework"; sourceTree = "<group>"; };
 		EC5175C11D071E8E00C7ECE1 /* RNBackgroundGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundGeolocation.xcodeproj; path = "../node_modules/react-native-background-geolocation/RNBackgroundGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		ECFE9FBD1CFB984200CBEFAC /* TSLocationManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSLocationManager.framework; path = "../node_modules/react-native-background-geolocation/RNBackgroundGeolocation/TSLocationManager.framework"; sourceTree = "<group>"; };
 		ECFE9FBF1CFB987400CBEFAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -219,6 +232,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4E6A9D1D65095300574428 /* TSBackgroundFetch.framework in Frameworks */,
+				EC4E6A9B1D65091000574428 /* libRNBackgroundFetch.a in Frameworks */,
 				ECFE9FC01CFB987400CBEFAC /* libsqlite3.tbd in Frameworks */,
 				ECFE9FBE1CFB984200CBEFAC /* TSLocationManager.framework in Frameworks */,
 				EC5175CA1D07210C00C7ECE1 /* libRNBackgroundGeolocation.a in Frameworks */,
@@ -326,6 +341,7 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				EC4E6A991D6508BA00574428 /* RNBackgroundFetch+AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -353,6 +369,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EC4E6A831D65087300574428 /* RNBackgroundFetch.xcodeproj */,
 				EC5175C11D071E8E00C7ECE1 /* RNBackgroundGeolocation.xcodeproj */,
 				EC3A08351CEF85BF006FB544 /* Fabric.framework */,
 				EC3A08361CEF85BF006FB544 /* Crashlytics.framework */,
@@ -418,11 +435,20 @@
 		EC342B601CFEBA7B003DEA9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC4E6A9C1D65095300574428 /* TSBackgroundFetch.framework */,
 				EC342B611CFEBB77003DEA9E /* FBSDKCoreKit.framework */,
 				EC342B621CFEBB77003DEA9E /* FBSDKLoginKit.framework */,
 				EC342B631CFEBB77003DEA9E /* FBSDKShareKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC4E6A841D65087300574428 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E6A961D65087300574428 /* libRNBackgroundFetch.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EC5175C21D071E8E00C7ECE1 /* Products */ = {
@@ -591,6 +617,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = EC4E6A841D65087300574428 /* Products */;
+					ProjectRef = EC4E6A831D65087300574428 /* RNBackgroundFetch.xcodeproj */;
+				},
+				{
 					ProductGroup = EC5175C21D071E8E00C7ECE1 /* Products */;
 					ProjectRef = EC5175C11D071E8E00C7ECE1 /* RNBackgroundGeolocation.xcodeproj */;
 				},
@@ -679,6 +709,13 @@
 			fileType = archive.ar;
 			path = libRCTFBSDK.a;
 			remoteRef = EC342B551CFEB531003DEA9E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EC4E6A961D65087300574428 /* libRNBackgroundFetch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBackgroundFetch.a;
+			remoteRef = EC4E6A951D65087300574428 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EC5175C71D071E8E00C7ECE1 /* libRNBackgroundGeolocation.a */ = {
@@ -788,6 +825,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4E6A9A1D6508BA00574428 /* RNBackgroundFetch+AppDelegate.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -872,6 +910,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/**",
 					"~/Documents/FacebookSDK",
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -906,6 +945,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/**",
 					"~/Documents/FacebookSDK",
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
