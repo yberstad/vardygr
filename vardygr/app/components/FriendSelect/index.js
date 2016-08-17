@@ -25,7 +25,7 @@ export default class FriendSelect extends Component {
             let friends = [];
             this.dataBlob.map((item) => {
                 if(item.selected){
-                    friends.push(item.friend.id);
+                    friends.push(item.friend);
                 }
             });
 

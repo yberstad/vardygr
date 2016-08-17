@@ -8,9 +8,10 @@ export default createSelector(
     let clone = Object.assign({}, event);
     delete clone._id;
     clone.participants.push({
-        userId: user.id,
+        facebookId: user.services.facebook.id,
         acknowledged: false,
-        accepted: false
+        accepted: false,
+        displayName: user.services.facebook.name
     })
     return clone;
 });

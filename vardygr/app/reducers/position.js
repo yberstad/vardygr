@@ -1,7 +1,6 @@
 import { POSITION_ADD } from '../constants/actions';
 
 const initialState = {
-    eventIds: [],
     location: {
         type: "Point",
             coordinates: []
@@ -16,8 +15,7 @@ export default (state = initialState, action) => {
                 coordinates: [action.longitude, action.latitude]
             };
             return Object.assign({}, state, {
-                location: selectedLocation,
-                eventIds: action.eventIds
+                location: selectedLocation
             });
         default:
             return state

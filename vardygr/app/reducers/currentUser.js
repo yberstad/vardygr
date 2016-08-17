@@ -5,7 +5,8 @@ import { Actions } from 'react-native-router-flux';
 
 const initialState = {
     signedIn: false,
-    user: null
+    user: null,
+    beacon: null,
 }
 export default (state = initialState, action) => {
     switch (action.type){

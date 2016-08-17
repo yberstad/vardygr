@@ -4,10 +4,12 @@ import EventTracking from '../components/EventTracking';
 import { createStructuredSelector } from 'reselect';
 import appState from '../selectors/appState';
 import currentEvent from '../selectors/currentEvent';
+import currentUser from '../selectors/currentUser';
 
 const selectors = {
     appState,
-    currentEvent
+    currentEvent,
+    currentUser
 }
 
 export default class EventTrackingContainer extends Component {

@@ -19,12 +19,13 @@ var initialState  = {
         coordinates: []
     },
     participants: [{
-        userId: '',
+        facebookId: '',
         acknowledged: false,
-        accepted: false
+        accepted: false,
+        displayName: ''
     }],
     coHosts: [{
-        userId: '',
+        facebookId: '',
         acknowledged: false,
         accepted: false
     }],
@@ -72,17 +73,18 @@ export default (state = initialState, action) => {
             });
         case EVENT_EDIT_SELECT_PARTICIPANTS:
             let participants = [];
-            action.participantList.map((id) => {
-                let participant = _.find(state.participants, (p) => {return p.userId === id});
+            action.participantList.map((item) => {
+                let participant = _.find(state.participants, (p) => {return p.userId === item.id});
                 let newParticipant;
                 if(participant){
                     newParticipant = Object.assign({}, participant );
                 }
                 else{
                     newParticipant = {
-                        userId: id,
+                        facebookId: item.id,
                         acknowledged: false,
-                        accepted: false
+                        accepted: false,
+                        displayName: item.name
                     };
                 }
                 participants.push(newParticipant);

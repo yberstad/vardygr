@@ -27,7 +27,7 @@ Events.schema = new SimpleSchema({
     participants: {
         type: [Object]
     },
-    "participants.$.userId": {
+    "participants.$.facebookId": {
         type: String
     },
     "participants.$.acknowledged": {
@@ -36,10 +36,16 @@ Events.schema = new SimpleSchema({
     "participants.$.accepted": {
         type: Boolean
     },
+    "participants.$.displayName": {
+        type: String
+    },
+    "participants.$.beaconId": {
+        type: String
+    },
     coHosts: {
         type: [Object]
     },
-    "coHosts.$.userId": {
+    "coHosts.$.facebookId": {
         type: String
     },
     "coHosts.$.acknowledged": {
@@ -106,6 +112,98 @@ Positions.schema = new SimpleSchema({
     },
     createdBy: {
         type: String
+    },
+    createdByFacebookId: {
+        type: String,
+        optional: true
+    },
+    timestamp: {
+        type: Date
+    }
+});
+
+Beacons = new Mongo.Collection('beacons');
+Beacons.schema = new SimpleSchema({
+    title: {
+        type: String,
+        optional: true
+    },
+    description: {
+        type: String,
+        optional: true
+    },
+    url: {
+        type: String,
+        optional: true
+    },
+    location: {
+        type: Object,
+        index: '2dsphere',
+        optional: true,
+    },
+    'location.type': {
+        type: String,
+        allowedValues: ['Point']
+    },
+    'location.coordinates': {
+        type: [Number],
+        decimal: true,
+        minCount: 2,
+        maxCount: 2,
+        optional: false
+    },
+    transportMode:{
+        type: String,
+        optional: true
+    },
+    public: {
+        type: Boolean
+    },
+    createWayPoints: {
+        type: Boolean
+    },
+    cooperationOwner: {
+        type: String,
+        optional: true
+    },
+    usedBy: {
+        type: String
+    },
+    usedByFacebookId: {
+        type: String,
+        optional: true
+    },
+    createdBy: {
+        type: String
+    },
+    createdByFacebookId: {
+        type: String,
+        optional: true
+    },
+    timestamp: {
+        type: Date
+    }
+});
+
+WayPoint = new Mongo.Collection('waypoint');
+WayPoint.schema = new SimpleSchema({
+    beaconId:{
+        type: String
+    },
+    location: {
+        type: Object,
+        index: '2dsphere'
+    },
+    'location.type': {
+        type: String,
+        allowedValues: ['Point']
+    },
+    'location.coordinates': {
+        type: [Number],
+        decimal: true,
+        minCount: 2,
+        maxCount: 2,
+        optional: false
     },
     timestamp: {
         type: Date

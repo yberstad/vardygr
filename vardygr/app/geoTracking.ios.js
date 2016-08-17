@@ -3,6 +3,7 @@ import { Text, Platform } from 'react-native';
 import {store} from './index';
 import appCurrentPosition from './actions/appCurrentPosition';
 import positionAdd from './actions/positionAdd';
+import beaconUpdate from './actions/beaconUpdate';
 import {geoLoationConfig} from './config';
 
 var BackgroundGeolocation = require('react-native-background-geolocation');
@@ -30,6 +31,7 @@ export function startGeoTracking()
             console.log('BackgroundGeolocation on-method received current position: ', JSON.stringify(location));
             store.dispatch(positionAdd(location.coords.longitude, location.coords.latitude));
             store.dispatch(appCurrentPosition(location.coords.longitude, location.coords.latitude));
+            store.dispatch(beaconUpdate(location.coords.longitude, location.coords.latitude));
         });
 
         // Fetch current position

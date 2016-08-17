@@ -17,14 +17,23 @@ Meteor.methods({
                 "participants": {
                     $elemMatch:
                     {
-                        $or: [
-                            { userId:  Meteor.userId() },
-                            { userId:  user.services.facebook.id }
-                        ]
+                        facebookId:  user.services.facebook.id
                     }
                 }
             }
         ).fetch();
+        // return Events.find({
+        //         "participants": {
+        //             $elemMatch:
+        //             {
+        //                 $or: [
+        //                     { userId:  Meteor.userId() },
+        //                     { userId:  user.services.facebook.id }
+        //                 ]
+        //             }
+        //         }
+        //     }
+        // ).fetch();
         //return Events.find({ $elemMatch: { $or: [ {"participants.userId": Meteor.userId()}, {"participants.$userId": user.services.facebook.id}] }}).fetch();
     }
 });
@@ -43,7 +52,7 @@ Meteor.methods({
         if (!Meteor.userId()) {
             return null;
         }
-        return Meteor.user();
+        return Meteor.users.findOne({"_id": Meteor.userId()});
     }
 });
 
@@ -62,10 +71,14 @@ Meteor.methods({
 
 Meteor.methods({
     'addPosition': function(position) {
+        var user = Meteor.users.findOne({"_id": Meteor.userId()});
+        if(user){
+            position.createdByFacebookId = user.services.facebook.id;
+        }
         position.createdBy = (Meteor.userId()) ? Meteor.userId() : '';
         position.timestamp = new Date();
         Positions.schema.validate(position);
-        Positions.insert(position);
+        return Positions.insert(position);
     }
 });
 
@@ -82,6 +95,7 @@ Meteor.publish('positions', function(eventIdList) {
             _id: "$createdBy",
             createdBy: {$last: "$createdBy"},
             timestamp: {$last: "$timestamp"},
+            createdByFacebookId: {$last: "$createdByFacebookId"},
             coordinates: {$last: "$location.coordinates"}
         }
         }
@@ -203,4 +217,77 @@ Meteor.publish('locations', function(geoRequestId) {
     sub.onStop(function () {
         handle.stop();
     });
+});
+
+Meteor.publish('beacons-by-facebookid', function(facebookIdList) {
+    if (!this.userId) {
+        return this.ready();
+    }
+    return Beacons.find({ usedByFacebookId: { $in: this._params } })
+});
+
+Meteor.methods({
+    'updateBeacon': function(beaconId, location) {
+        if (!Meteor.userId()) {
+            return null;
+        }
+        var user = Meteor.users.findOne({"_id": Meteor.userId()});
+        Beacons.update(
+            {_id: beaconId},
+            {
+                $set: {
+                    location: location,
+                    usedBy: user._id,
+                    usedByFacebookId: user.services.facebook.id
+                }
+            }
+        );
+    }
+});
+
+Meteor.methods({
+    'insertBeacon': function(beacon) {
+        if (!Meteor.userId()) {
+            return null;
+        }
+        var user = Meteor.users.findOne({"_id": Meteor.userId()});
+        if(user){
+            beacon.createdByFacebookId = user.services.facebook.id;
+        }
+        beacon.createdBy = (Meteor.userId()) ? Meteor.userId() : '';
+        beacon.timestamp = new Date();
+        Beacons.schema.validate(beacon);
+        Beacons.insert(beacon);
+    }
+});
+
+Meteor.methods({
+    'getBeaconsForLoggedInUser': function() {
+        if (!Meteor.userId()) {
+            return null;
+        }
+        var user = Meteor.users.findOne({"_id": Meteor.userId()});
+        if(user){
+            return Beacons.findOne({usedBy: user._id});
+        }
+        return null;
+    }
+});
+
+Meteor.methods({
+    'getBeaconsById': function(id) {
+        if (!Meteor.userId()) {
+            return null;
+        }
+        return Beacons.find({_id: id});
+    }
+});
+
+Meteor.methods({
+    'getBeaconsByFacebookIdList': function(facebookIdList) {
+        if (!Meteor.userId()) {
+            return null;
+        }
+        return Beacons.find({usedByFacebookId: {$in: facebookIdList}});
+    }
 });

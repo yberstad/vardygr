@@ -12,7 +12,20 @@ function* signInWithFacebook(action) {
         const user = yield call(ddpClient.callPromise, 'login', [params]);
         yield call(ddpClient.persistUser, user);
 
-        yield put(loggedInSuccess(user));
+        const userDetailed = yield call(ddpClient.callPromise, 'getUser');
+        let beacon = yield call(ddpClient.callPromise, 'getBeaconsForLoggedInUser');
+        if(beacon == null){
+            let beaconToInsert = {};
+
+            beaconToInsert.public = false;
+            beaconToInsert.createWayPoints = false;
+            beaconToInsert.usedBy = userDetailed._id;
+            beaconToInsert.usedByFacebookId = userDetailed.services.facebook.id;
+
+            yield call(ddpClient.callPromise, 'insertBeacon' [beaconToInsert]);
+            beacon = yield call(ddpClient.callPromise, 'getBeaconsForLoggedInUser');
+        }
+        yield put(loggedInSuccess(userDetailed, beacon));
     }
     catch(err)
     {
@@ -23,3 +36,4 @@ function* signInWithFacebook(action) {
 export function* watchSignInWithFacebook() {
     yield* takeLatest(SIGNIN_FACEBOOK, signInWithFacebook);
 }
+

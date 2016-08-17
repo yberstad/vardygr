@@ -57,7 +57,11 @@ export default class Vardygr extends Component {
                 store.dispatch(appConnected(true));
                 ddpClient.loginWithToken((err, res) => {
                     if (!err) {
-                        store.dispatch(loggedInSuccess(res));
+                        ddpClient.callPromise('getUser').then((user) => {
+                            store.dispatch(loggedInSuccess(user));
+                        }).catch((error)=>{
+                            console.log(error);
+                        })
                     }
                     else{
                         Actions.signIn({type: 'reset'});
