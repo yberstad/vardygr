@@ -291,3 +291,11 @@ Meteor.methods({
         return Beacons.find({usedByFacebookId: {$in: facebookIdList}});
     }
 });
+
+Meteor.publish('get-current-user', function() {
+    if (!this.userId) {
+        return this.ready();
+    }
+
+    return Meteor.users.findOne({ _id: this.userId });
+});

@@ -27,6 +27,7 @@ Vardygr.propTypes = {
 };
 
 export default createContainer(() => {
+  //const handle = Meteor.subscribe('get-current-user');
   return {
     status: Meteor.status(),
     user: Meteor.user(),

@@ -5,6 +5,7 @@ import Avatar from '../../components/Avatar';
 import images from '../../config/images';
 import { capitalize } from '../../lib/string';
 import styles from './styles';
+import FBSDK, { LoginButton } from 'react-native-fbsdk';
 
 const Profile = (props) => {
   const { user, signOut } = props;
@@ -21,6 +22,8 @@ const Profile = (props) => {
         <Avatar email={email} />
         <Text>{capitalize(email)}</Text>
         <Button text="Sign Out" onPress={signOut} />
+        <LoginButton
+            onLogoutFinished={signOut} />
       </View>
     </View>
   );

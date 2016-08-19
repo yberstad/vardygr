@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { LayoutAnimation } from 'react-native';
+import { LayoutAnimation, AsyncStorage } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import SignIn from './SignIn';
+import FBSDK, { LoginButton, AccessToken } from 'react-native-fbsdk';
+
+const USER_TOKEN_KEY = 'reactnativemeteor_usertoken';
 
 class SignInContainer extends Component {
   constructor(props) {
@@ -79,14 +82,46 @@ class SignInContainer extends Component {
     }
   }
 
+  loginWithTokens() {
+    const Data = Meteor.getData();
+    AccessToken.getCurrentAccessToken()
+        .then((res) => {
+          if (res) {
+            Meteor.call('login', { facebook: res }, (err, result) => {
+              if(!err) {//save user id and token
+                AsyncStorage.setItem(USER_TOKEN_KEY, result.token);
+                Data._tokenIdSaved = result.token;
+                Meteor._userIdSaved = result.id;
+              }
+            });
+          }
+        });
+  }
+
+  signInFacebook (error, result) {
+    if (error) {
+      console.log('login error', error);
+    } else if (result.isCancelled) {
+      console.log('login cancelled');
+    } else {
+      this.loginWithTokens();
+    }
+  };
+
+  signOutFacebook (){
+    Meteor.logout();
+  }
+
   render() {
     return (
-      <SignIn
-        updateState={this.setState.bind(this)}
-        signIn={this.handleSignIn.bind(this)}
-        createAccount={this.handleCreateAccount.bind(this)}
-        {...this.state}
-      />
+        <SignIn
+            updateState={this.setState.bind(this)}
+            signIn={this.handleSignIn.bind(this)}
+            createAccount={this.handleCreateAccount.bind(this)}
+            signInFacebook={this.signInFacebook.bind(this)}
+            signOutFacebook={this.signOutFacebook.bind(this)}
+            {...this.state}
+        />
     );
   }
 }
