@@ -3,9 +3,84 @@ import FacebookOAuthInit from './imports/oauth-facebook';
 
 Meteor.startup(() => {
     // code to run on server at startup
-    Events._ensureIndex({ "location": "2dsphere"});
+    //Events._ensureIndex({ "location": "2dsphere"});
     FacebookOAuthInit();
 });
+
+
+
+Meteor.methods({
+    'insertRouteWithEmbeddedInfo': function(params) {
+        const route = params.route;
+
+        // If this isn't facebook login then we don't care about it. No need to proceed.
+        if (!route) {
+            return undefined;
+        }
+
+        if (!Meteor.userId()) {
+            return undefined;
+        }
+        route.createdBy = Meteor.userId();
+        route.timestamp = new Date();
+        RoutesEmbedded.schema.validate(route);
+        return RoutesEmbedded.insert(route);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Meteor.methods({
     'getEventList': function() {

@@ -8,7 +8,7 @@ import styles from './styles';
 import FBSDK, { LoginButton } from 'react-native-fbsdk';
 
 const Profile = (props) => {
-  const { user, signOut } = props;
+  const { user, signOut, onInsertRoutePress } = props;
   let email;
 
   if (user) {
@@ -24,6 +24,10 @@ const Profile = (props) => {
         <Button text="Sign Out" onPress={signOut} />
         <LoginButton
             onLogoutFinished={signOut} />
+        <Button
+            text="Insert Route"
+            onPress={onInsertRoutePress}
+        />
       </View>
     </View>
   );
@@ -32,6 +36,7 @@ const Profile = (props) => {
 Profile.propTypes = {
   user: React.PropTypes.object,
   signOut: React.PropTypes.func,
+  onInsertRoutePress: React.PropTypes.func
 };
 
 export default Profile;

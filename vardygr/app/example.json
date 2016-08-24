@@ -1,31 +1,4 @@
-import React, { Component } from 'react';
-import Meteor, { createContainer } from 'react-native-meteor';
-import Profile from './Profile';
-import routeData from '../../example.json';
-
-var reISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*))(?:Z|(\+|-)([\d|:]*))?$/;
-var reMsAjax = /^\/Date\((d|-|.*)\)[\/|\\]$/;
-
-const dateTimeReviver = function (key, value) {
-  if (typeof value === 'string') {
-    var a = reISO.exec(value);
-    if (a)
-      return new Date(value);
-    a = reMsAjax.exec(value);
-    if (a) {
-      var b = a[1].split(/[-+,.]/);
-      return new Date(b[0] ? +b[0] : 0 - +b[1]);
-    }
-  }
-  return value;
-}
-
-class ProfileContainer extends Component {
-  handleSignOut() {
-    Meteor.logout();
-  }
-  onInsertRoutePress(){
-    var jsonString = `{
+{
   "title": "Trysilbussen på tur i oslo",
   "routeNumber": "Rute nr 999",
   "description": "Beskrivelse av bussruta",
@@ -35,69 +8,57 @@ class ProfileContainer extends Component {
   "timetable": {
     "stopsAreReoccurring": false,
     "weekday": 1,
-    "stopList": [
+    "stopList": [{
+      "stopId": 1,
+      "stopName": "Trysil rutebilstasjon",
+      "time": "0000-01-01T06:45:00.000Z"
+    },
       {
-          "timetableStopId": 1001,   
-          "stopId": 1,
-          "stopName": "Trysil rutebilstasjon",
-          "time": "0000-01-01T06:45:00.000Z"
-      },
-      {
-        "timetableStopId": 1002,       
         "stopId": 2,
         "stopName": "Nybersund",
         "time": "0000-01-01T07:00:00.000Z"
       },
       {
-        "timetableStopId": 1003, 
         "stopId": 3,
         "stopName": "Grøndalen",
         "time": "0000-01-01T07:15:00.000Z"
       },
       {
-        "timetableStopId": 1004, 
         "stopId": 4,
         "stopName": "Trysil Flyplass",
         "time": "0000-01-01T07:15:00.000Z"
       },
       {
-        "timetableStopId": 1005, 
         "stopId": 5,
         "stopName": "Tørberget",
         "time": "0000-01-01T07:40:00.000Z"
       },
       {
-        "timetableStopId": 1006, 
         "stopId": 6,
         "stopName": "Søre Osen",
         "time": "0000-01-01T07:50:00.000Z"
       },
       {
-        "timetableStopId": 1007, 
         "stopId": 7,
         "stopName": "Hernes",
         "time": "0000-01-01T08:00:00.000Z"
       },
       {
-        "timetableStopId": 1008, 
         "stopId": 8,
         "stopName": "Elverum",
         "time": "0000-01-01T08:10:00.000Z"
       },
       {
-        "timetableStopId": 1009, 
         "stopId": 9,
         "stopName": "Elverum Høyskolesenter",
         "time": "0000-01-01T08:20:00.000Z"
       },
       {
-        "timetableStopId": 1010, 
         "stopId": 10,
         "stopName": "Myklagaard",
         "time": "0000-01-01T08:30:00.000Z"
       },
       {
-        "timetableStopId": 1011, 
         "stopId": 11,
         "stopName": "Lutnes",
         "time": "0000-01-01T08:40:00.000Z"
@@ -3500,36 +3461,4 @@ class ProfileContainer extends Component {
       ]
     }
   }
-}`;
-    var route = JSON.parse(jsonString, dateTimeReviver);
-    Meteor.call('insertRouteWithEmbeddedInfo', { route }, (err, result) => {
-      if(err) {//save user id and token
-        console.log(err);
-      }
-    });
-  }
-
-
-
-  render() {
-    const { user } = this.props;
-
-    return (
-        <Profile
-            user={user}
-            signOut={this.handleSignOut.bind(this)}
-            onInsertRoutePress={this.onInsertRoutePress.bind(this)}
-        />
-    );
-  }
 }
-
-ProfileContainer.propTypes = {
-  user: React.PropTypes.object,
-};
-
-export default createContainer(() => {
-  return {
-    user: Meteor.user(),
-  };
-}, ProfileContainer);
