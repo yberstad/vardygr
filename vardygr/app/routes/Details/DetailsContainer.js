@@ -15,7 +15,7 @@ DetailsContainer.propTypes = {
 };
 
 export default createContainer(() => {
-  const handle = Meteor.subscribe('details-list');
+  const handle = Meteor.subscribe('beacons-by-id', { beaconId: 'beaconId_1'});
   return {
     detailsReady: handle.ready(),
   };

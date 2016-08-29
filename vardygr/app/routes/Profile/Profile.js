@@ -8,7 +8,7 @@ import styles from './styles';
 import FBSDK, { LoginButton } from 'react-native-fbsdk';
 
 const Profile = (props) => {
-  const { user, signOut, onInsertRoutePress } = props;
+  const { user, signOut, onInsertTestDataPress, onStartBeacon1Press, onStopBeaconPress } = props;
   let email;
 
   if (user) {
@@ -25,8 +25,16 @@ const Profile = (props) => {
         <LoginButton
             onLogoutFinished={signOut} />
         <Button
-            text="Insert Route"
-            onPress={onInsertRoutePress}
+            text="Create Test Data (only press once)"
+            onPress={onInsertTestDataPress}
+        />
+        <Button
+            text="Start Beacon 1"
+            onPress={onStartBeacon1Press}
+        />
+        <Button
+            text="Stop Beacon"
+            onPress={onStopBeaconPress}
         />
       </View>
     </View>
@@ -36,7 +44,9 @@ const Profile = (props) => {
 Profile.propTypes = {
   user: React.PropTypes.object,
   signOut: React.PropTypes.func,
-  onInsertRoutePress: React.PropTypes.func
+  onInsertTestDataPress: React.PropTypes.func,
+  onStartBeacon1Press: React.PropTypes.func,
+  onStopBeaconPress: React.PropTypes.func
 };
 
 export default Profile;

@@ -4,6 +4,12 @@ import { MeteorListView } from 'react-native-meteor';
 import Loading from '../../components/Loading';
 import styles from './styles';
 
+function renderRow(beacon) {
+    return <Text style={styles.item}>
+        {beacon.geometry.coordinates[0]}:
+        {beacon.geometry.coordinates[1]} </Text>;
+}
+
 const Details = ({ detailsReady }) => {
   if (!detailsReady) {
     return <Loading />;
@@ -13,8 +19,8 @@ const Details = ({ detailsReady }) => {
     <View style={styles.container}>
       <MeteorListView
         contentContainerStyle={styles.list}
-        collection="details"
-        renderRow={(detail) => <Text style={styles.item}>{detail.name}</Text>}
+        collection="beacons"
+        renderRow={renderRow}
       />
     </View>
   );

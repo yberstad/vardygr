@@ -3,17 +3,16 @@ import FacebookOAuthInit from './imports/oauth-facebook';
 
 Meteor.startup(() => {
     // code to run on server at startup
-    //Events._ensureIndex({ "location": "2dsphere"});
+    Stops._ensureIndex({ "geometry": "2dsphere"});
     FacebookOAuthInit();
 });
 
 
 
 Meteor.methods({
-    'insertRouteWithEmbeddedInfo': function(params) {
+    'insertRoute': function(params) {
         const route = params.route;
 
-        // If this isn't facebook login then we don't care about it. No need to proceed.
         if (!route) {
             return undefined;
         }
@@ -23,11 +22,125 @@ Meteor.methods({
         }
         route.createdBy = Meteor.userId();
         route.timestamp = new Date();
-        RoutesEmbedded.schema.validate(route);
-        return RoutesEmbedded.insert(route);
+        Routes.schema.validate(route);
+        return Routes.insert(route);
     }
 });
 
+Meteor.methods({
+    'insertStop': function(params) {
+        const stop = params.stop;
+
+        if (!stop) {
+            return undefined;
+        }
+
+        if (!Meteor.userId()) {
+            return undefined;
+        }
+        stop.createdBy = Meteor.userId();
+        stop.timestamp = new Date();
+        Stops.schema.validate(stop);
+        return Stops.insert(stop);
+    }
+});
+
+
+
+Meteor.methods({
+    'findNearStops': function(params) {
+        const currentPosition = params.currentPosition;
+
+        if (!currentPosition) {
+            return undefined;
+        }
+        try {
+            return Stops.find(
+                {
+                    geometry: {
+                        $near: {
+                            $geometry: currentPosition.location,
+                            $maxDistance: 500
+                        }
+                    }
+                }).fetch();
+        }
+        catch (ex){
+            console.log(ex);
+        }
+    }
+});
+
+Meteor.methods({
+    'findNearStop': function(params) {
+        const currentPosition = params.currentPosition;
+
+        if (!currentPosition) {
+            return undefined;
+        }
+        try {
+            return Stops.findOne(
+                {
+                    geometry: {
+                        $near: {
+                            $geometry: currentPosition.location,
+                            $maxDistance: 500
+                        }
+                    }
+                });
+        }
+        catch (ex){
+            console.log(ex);
+        }
+    }
+});
+
+Meteor.methods({
+    'getRoutList': function(params) {
+        return Routes.find({'timetable.stopList.stopId': params.stopId}
+        ).fetch();
+     }
+});
+
+Meteor.methods({
+    'insertBeacon': function(params) {
+        var beacon = params.beacon;
+        if (!Meteor.userId()) {
+            return null;
+        }
+        beacon.createdBy = Meteor.userId();
+        beacon.timestamp = new Date();
+        Beacons.schema.validate(beacon);
+        Beacons.insert(beacon);
+    }
+});
+
+Meteor.methods({
+    'updateBeacon': function(params) {
+        var beaconId = params.beaconId;
+        var location = params.location;
+
+        if (!Meteor.userId()) {
+            return null;
+        }
+
+        Beacons.update(
+            {beaconId: beaconId},
+            {
+                $set: {
+                    geometry: location,
+                    createdBy: Meteor.userId(),
+                    timestamp: new Date()
+                }
+            }
+        );
+    }
+});
+
+Meteor.publish('beacons-by-id', function(params) {
+    var beaconId = params.beaconId
+    return Beacons.find({ beaconId: beaconId });
+});
 
 
 
@@ -299,41 +412,6 @@ Meteor.publish('beacons-by-facebookid', function(facebookIdList) {
         return this.ready();
     }
     return Beacons.find({ usedByFacebookId: { $in: this._params } })
-});
-
-Meteor.methods({
-    'updateBeacon': function(beaconId, location) {
-        if (!Meteor.userId()) {
-            return null;
-        }
-        var user = Meteor.users.findOne({"_id": Meteor.userId()});
-        Beacons.update(
-            {_id: beaconId},
-            {
-                $set: {
-                    location: location,
-                    usedBy: user._id,
-                    usedByFacebookId: user.services.facebook.id
-                }
-            }
-        );
-    }
-});
-
-Meteor.methods({
-    'insertBeacon': function(beacon) {
-        if (!Meteor.userId()) {
-            return null;
-        }
-        var user = Meteor.users.findOne({"_id": Meteor.userId()});
-        if(user){
-            beacon.createdByFacebookId = user.services.facebook.id;
-        }
-        beacon.createdBy = (Meteor.userId()) ? Meteor.userId() : '';
-        beacon.timestamp = new Date();
-        Beacons.schema.validate(beacon);
-        Beacons.insert(beacon);
-    }
 });
 
 Meteor.methods({

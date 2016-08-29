@@ -47,52 +47,9 @@ RouteMaps.schema = new SimpleSchema({
     },
 });
 
-Stops = new Mongo.Collection('stops');
-Stops.schema = new SimpleSchema({
-    routeMapId:{
-        type: String,
-        optional: true
-    },
-    stop:{
-        type: Object
-    },
-    'stop.type': {
-        type: String,
-        allowedValues: ["Feature"]
-    },
-    'stop.properties': {
-        type: Object
-    },
-    'stop.properties.name': {
-        type: String
-    },
-    'stop.properties.drawOrder': {
-        type: Number
-    },
-    'stop.properties.embarkingOnly': {
-        type: Boolean
-    },
-    'stop.properties.disembarkingOnly': {
-        type: Boolean
-    },
-    'stop.geometry': {
-        type: Object
-    },
-    'stop.geometry.type': {
-        type: String,
-        allowedValues: ["Point"]
-    },
-    'stop.geometry.coordinates': {
-        type: [Number],
-        decimal: true,
-        minCount: 2,
-        maxCount: 2,
-        optional: false
-    },
-});
 
-Routes = new Mongo.Collection('routes');
-Routes.schema = new SimpleSchema({
+RoutesOld = new Mongo.Collection('routesold');
+RoutesOld.schema = new SimpleSchema({
     routeMapId: {
         type: String,
         optional: true
@@ -152,13 +109,20 @@ Routes.schema = new SimpleSchema({
 });
 
 
-RoutesEmbedded = new Mongo.Collection('routesembedded');
-RoutesEmbedded.schema = new SimpleSchema({
+Routes = new Mongo.Collection('routes');
+Routes.schema = new SimpleSchema({
+    routeId: {
+        type: String
+    },
     title: {
         type: String
     },
     routeNumber: {
         type: String,
+        optional: true
+    },
+    associatedReturnRoutes: {
+        type: [String],
         optional: true
     },
     description: {
@@ -181,90 +145,55 @@ RoutesEmbedded.schema = new SimpleSchema({
         optional: true
     },
     timetable: {
-       type: Object
+        type: [Object]
     },
-    'timetable.stopsAreReoccurring': {
-        type: Boolean
-    },
-    'timetable.reoccurringDescription': {
+    'timetable.$.beaconId': {
         type: String,
         optional: true
     },
-    'timetable.firstDeparture': {
+    'timetable.$.stopsAreReoccurring': {
+        type: Boolean
+    },
+    'timetable.$.reoccurringDescription': {
+        type: String,
+        optional: true
+    },
+    'timetable.$.firstDeparture': {
         type: Date, // Time only
         optional: true
     },
-    'timetable.lastDeparture': {
+    'timetable.$.lastDeparture': {
         type: Date, // Time only
         optional: true
     },
-    'timetable.weekday': {
+    'timetable.$.weekday': {
         type: Number, // Time only
         min: 1,
         max: 7
     },
-    'timetable.stopList':{
+    'timetable.$.stopList':{
         type: [Object],
         optional: true
     },
-    'timetable.stopList.$.timetableStopId': {
-        type: Number
+    'timetable.$.stopList.$.timetableStopId': {
+        type: String
     },
-    'timetable.stopList.$.stopId': {
-        type: Number
+    'timetable.$.stopList.$.stopId': {
+        type: String
     },
-    'timetable.stopList.$.stopName': {
+    'timetable.$.stopList.$.stopName': {
         type: String // Duplicate for simplicity
     },
 
-    'timetable.stopList.$.time': {
+    'timetable.$.stopList.$.time': {
         type: Date, // Time only
         optional: true
     },
-    'timetable.stopList.$.minutesOverHour': {
+    'timetable.$.stopList.$.minutesOverHour': {
         type: Number, // Used for reoccurring schedules
         optional: true,
         min: 1,
         max: 59
-    },
-    stops:{
-        type: [Object]
-    },
-    'stops.$.type': {
-        type: String,
-        allowedValues: ["Feature"]
-    },
-    'stops.$.properties': {
-        type: Object
-    },
-    'stops.$.properties.stopId': {
-        type: Number
-    },
-    'stops.$.properties.name': {
-        type: String
-    },
-    'stops.$.properties.drawOrder': {
-        type: Number
-    },
-    'stops.$.properties.embarkingAllowed': {
-        type: Boolean
-    },
-    'stops.$.properties.disembarkingAllowed': {
-        type: Boolean
-    },
-    'stops.$.geometry': {
-        type: Object
-    },
-    'stops.$.geometry.type': {
-        type: String,
-        allowedValues: ["Point"]
-    },
-    'stops.$.geometry.coordinates': {
-        type: [Number],
-        decimal: true,
-        minCount: 2,
-        maxCount: 3,
-        optional: false
     },
     lineString:{
         type: Object
@@ -304,19 +233,62 @@ RoutesEmbedded.schema = new SimpleSchema({
     }
 });
 
+Stops = new Mongo.Collection('stops');
+Stops.schema = new SimpleSchema({
+    routeIdList:{
+        type: [String],
+        optional: true
+    },
+    stopId: {
+        type: String
+    },
+    name: {
+        type: String
+    },
+    embarkingAllowed: {
+        type: Boolean
+    },
+    disembarkingAllowed: {
+        type: Boolean
+    },
+    geometry: {
+        type: Object
+    },
+    'geometry.type': {
+        type: String,
+        allowedValues: ["Point"]
+    },
+    'geometry.coordinates': {
+        type: [Number],
+        decimal: true,
+        minCount: 2,
+        maxCount: 2,
+        optional: false
+    },
+    createdBy: {
+        type: String
+    },
+    timestamp: {
+        type: Date
+    }
+});
+
 
 Beacons = new Mongo.Collection('beacons');
 Beacons.schema = new SimpleSchema({
-    location: {
+    beaconId: {
+        type: String
+    },
+    geometry: {
         type: Object,
         index: '2dsphere',
         optional: true,
     },
-    'location.type': {
+    'geometry.type': {
         type: String,
         allowedValues: ['Point']
     },
-    'location.coordinates': {
+    'geometry.coordinates': {
         type: [Number],
         decimal: true,
         minCount: 2,
@@ -325,6 +297,9 @@ Beacons.schema = new SimpleSchema({
     },
     saveLocations: {
         type: Boolean
+    },
+    createdBy: {
+        type: String
     },
     timestamp: {
         type: Date
