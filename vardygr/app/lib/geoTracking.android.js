@@ -17,12 +17,12 @@ export function startBeacon(beaconId)
         });
 
         // This handler fires whenever bgGeo receives a location update.
-        BackgroundGeolocation.on('location', function (location) {
+        BackgroundGeolocation.on('location', function (newLocation) {
             console.log('BackgroundGeolocation on-method received current position: ', JSON.stringify(location));
 
             var location = {
                 type: "Point",
-                coordinates: [location.coords.longitude, location.coords.latitude]
+                coordinates: [newLocation.coords.longitude, newLocation.coords.latitude]
             };
 
             Meteor.call('updateBeacon', {beaconId, location}, (err, result) => {
@@ -30,6 +30,27 @@ export function startBeacon(beaconId)
                     console.log(err)
                 }
             });
+        });
+    });
+}
+
+export function stopBeacon() {
+    BackgroundGeolocation.stop();
+}
+
+export function getCurrentPosition() {
+    return  new Promise((resolve, reject) => {
+        // Fetch current position
+        BackgroundGeolocation.getCurrentPosition({timeout: 30}, function (newLocation) {
+            console.log('BackgroundGeolocation getCurrentPosition received current position: ', JSON.stringify(newLocation));
+            var location = {
+                type: "Point",
+                coordinates: [location.coords.longitude, location.coords.latitude]
+            };
+            resolve(location);
+        }, function (error) {
+            console.log('Location error: ' + error);
+            reject(error);
         });
     });
 }

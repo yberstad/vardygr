@@ -4,6 +4,7 @@ import FacebookOAuthInit from './imports/oauth-facebook';
 Meteor.startup(() => {
     // code to run on server at startup
     Stops._ensureIndex({ "geometry": "2dsphere"});
+    Stops._ensureIndex({"name":1})
     FacebookOAuthInit();
 });
 
@@ -73,9 +74,9 @@ Meteor.methods({
 
 Meteor.methods({
     'findNearStop': function(params) {
-        const currentPosition = params.currentPosition;
+        const location = params.location;
 
-        if (!currentPosition) {
+        if (!location) {
             return undefined;
         }
         try {
@@ -83,11 +84,27 @@ Meteor.methods({
                 {
                     geometry: {
                         $near: {
-                            $geometry: currentPosition.location,
+                            $geometry: location,
                             $maxDistance: 500
                         }
                     }
                 });
+        }
+        catch (ex){
+            console.log(ex);
+        }
+    }
+});
+
+Meteor.methods({
+    'searchStops': function(params) {
+        const searchString = params.searchString;
+
+        if (!searchString) {
+            return undefined;
+        }
+        try {
+            return Stops.find({name: {$regex: ".*" + searchString + ".*" , $options: 'i'}}, {limit: 20}).fetch();
         }
         catch (ex){
             console.log(ex);
