@@ -1,3 +1,5 @@
-/**
- * Created by oyvindhabberstad on 24/08/16.
- */
+import RouteTrackerContainer from './RouteTrackerContainer';
+import RouteTracker from './RouteTracker';
+
+export { RouteTracker };
+export default  RouteTrackerContainer;

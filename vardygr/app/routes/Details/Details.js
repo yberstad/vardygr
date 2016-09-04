@@ -20,7 +20,15 @@ function renderStop() {
 
 }
 
-const Details = ({ updateState, detailsReady, onFindNearStop, nearStop, searchStops, searchStopsResult,  beacon}) => {
+const Details = ({
+    updateState,
+    detailsReady,
+    onFindNearStop,
+    nearStop,
+    searchStops,
+    searchStopsResult,
+    beacon}) =>
+{
     if (!detailsReady) {
         return <Loading />;
     }
@@ -34,7 +42,7 @@ const Details = ({ updateState, detailsReady, onFindNearStop, nearStop, searchSt
 
     return (
         <View style={styles.container}>
-            {renderRow(beacon)}
+            
             <Text>Near stop: {nearStop}</Text>
             <Button
                 text="Find near stop"

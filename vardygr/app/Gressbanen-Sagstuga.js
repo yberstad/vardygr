@@ -4,6 +4,7 @@ export function getRoute() {
         title: "Gressbanen - Sagstuga",
         routeNumber: "Rute nr 1",
         description: "Beskrivelse av bussruta",
+        direction: "Sagstuga",
         url: "http://www.vardygr.com",
         validFrom: new Date("2016-10-15T00:00:00.000Z"),
         timetable:[
@@ -14,38 +15,50 @@ export function getRoute() {
                 stopList: [
                     {
                         timetableStopId: 'timetableStopId_1',
-                        stopId: ' stopId_1',
+                        stopId: 'stopId_1',
                         stopName: "Gressbanen",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T06:45:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_2',
                         stopId: 'stopId_2',
                         stopName: "Arnebråtveien",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:00:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_3',
                         stopId: 'stopId_3',
                         stopName: "Amagerveien",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:15:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_4',
                         stopId: 'stopId_4',
                         stopName: "Jarbakken",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:15:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_5',
                         stopId: 'stopId_5',
                         stopName: "Nordre Jarbakken",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:40:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_6',
                         stopId: 'stopId_6',
                         stopName: "Sagstuga",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:50:00.000Z")
                     }
                 ]
@@ -57,38 +70,50 @@ export function getRoute() {
                 stopList: [
                     {
                         timetableStopId: 'timetableStopId_13',
-                        stopId: ' stopId_1',
+                        stopId: 'stopId_1',
                         stopName: "Gressbanen",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T06:45:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_14',
                         stopId: 'stopId_2',
                         stopName: "Arnebråtveien",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:00:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_15',
                         stopId: 'stopId_3',
                         stopName: "Amagerveien",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:15:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_16',
                         stopId: 'stopId_4',
                         stopName: "Jarbakken",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:15:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_16',
                         stopId: 'stopId_5',
                         stopName: "Nordre Jarbakken",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:40:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_18',
                         stopId: 'stopId_6',
                         stopName: "Sagstuga",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T07:50:00.000Z")
                     }
                 ]
@@ -622,6 +647,7 @@ export function getReturnRoute() {
         title: "Sagstuga - Gressbanen",
         routeNumber: "Rute nr 2",
         description: "Beskrivelse av bussruta",
+        direction: "Gressbanen",
         url: "http://www.vardygr.com",
         validFrom: new Date("2016-10-15T00:00:00.000Z"),
         timetable:[
@@ -634,35 +660,47 @@ export function getReturnRoute() {
                         timetableStopId: 'timetableStopId_7',
                         stopId: 'stopId_6',
                         stopName: "Sagstuga",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T16:50:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_8',
                         stopId: 'stopId_5',
                         stopName: "Nordre Jarbakken",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T17:00:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_9',
                         stopId: 'stopId_4',
                         stopName: "Jarbakken",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T17:10:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_10',
                         stopId: 'stopId_3',
                         stopName: "Amagerveien",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T17:20:00.000Z")
                     },
                     {
                         timetableStopId: 'timetableStopId_11',
                         stopId: 'stopId_2',
                         stopName: "Arnebråtveien",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T17:30:00.000Z")
                     },                    {
                         timetableStopId: 'timetableStopId_12',
-                        stopId: ' stopId_1',
+                        stopId: 'stopId_1',
                         stopName: "Gressbanen",
+                        embarkingAllowed: true,
+                        disembarkingAllowed: true,
                         time: new Date("1970-01-01T17:40:00.000Z")
                     },
                 ]
@@ -1196,8 +1234,6 @@ export function getStops(){
         {
             stopId: 'stopId_1',
             name: "Gressbanen",
-            embarkingAllowed: true,
-            disembarkingAllowed: false,
             geometry: {
                 type: "Point",
                 coordinates: [
@@ -1210,8 +1246,6 @@ export function getStops(){
         {
             stopId: 'stopId_2',
             name: "Arnebråtveien",
-            embarkingAllowed: true,
-            disembarkingAllowed: false,
             geometry: {
                 type: "Point",
                 coordinates: [
@@ -1224,8 +1258,6 @@ export function getStops(){
         {
             stopId: 'stopId_3',
             name: "Amagerveien",
-            embarkingAllowed: true,
-            disembarkingAllowed: false,
             geometry: {
                 type: "Point",
                 coordinates: [
@@ -1238,8 +1270,6 @@ export function getStops(){
         {
             stopId: 'stopId_4',
             name: "Jarbakken",
-            embarkingAllowed: true,
-            disembarkingAllowed: false,
             geometry: {
                 type: "Point",
                 coordinates: [
@@ -1252,8 +1282,6 @@ export function getStops(){
         {
             stopId: 'stopId_5',
             name: "Nordre Jarbakken",
-            embarkingAllowed: true,
-            disembarkingAllowed: false,
             geometry: {
                 type: "Point",
                 coordinates: [
@@ -1266,8 +1294,6 @@ export function getStops(){
         {
             stopId: 'stopId_6',
             name: "Sagstuga",
-            embarkingAllowed: true,
-            disembarkingAllowed: false,
             geometry: {
                 type: "Point",
                 coordinates: [

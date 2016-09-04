@@ -165,8 +165,8 @@ export default class EventTracking extends Component
             .then((responseJson) => {
                 var counter = 0;
                 responseJson.rows.map(item => {
-                    distanceList[counter].distance = item.elements[0].distance.text;
-                    distanceList[counter].duration = item.elements[0].duration.text;
+                    distanceList[counter].distanceFromStop = item.elements[0].distanceFromStop.text;
+                    distanceList[counter].minutesFromStop = item.elements[0].minutesFromStop.text;
                     counter++;
                 });
                 this.setState({displayMode: orientation, distanceList: distanceList});
@@ -211,7 +211,7 @@ export default class EventTracking extends Component
         else{
             view = <View style={styles.container} onLayout={(event) => this.onLayoutChanged(event)}>
                 {this.state.distanceList.map(distance => (
-                    <Text key={distance.id}>{distance.title} distance: {distance.distance}</Text>
+                    <Text key={distance.id}>{distance.title} distance: {distance.distanceFromStop}</Text>
                 ))}
             </View>
         }

@@ -166,7 +166,7 @@ export default class LocationSelect extends Component {
                     }}
                     GooglePlacesSearchQuery={{
                         // available options for GooglePlacesSearch API : https://developers.google.com/places/web-service/search
-                        rankby: 'distance',
+                        rankby: 'distanceFromStop',
                         types: 'food',
                     }}
 

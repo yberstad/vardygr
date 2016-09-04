@@ -3,8 +3,18 @@ import Home from '../routes/Home';
 import Details from '../routes/Details';
 import Profile from '../routes/Profile';
 import SignIn from '../routes/SignIn';
+import RouteTracker from '../routes/RouteTracker';
 
 export const routes = {
+  getRouteTrackerRoute(route, stop){
+    return{
+      renderScene(navigator) {
+        return <RouteTracker navigator={navigator} route={route} stop={stop} />
+      },
+      
+      showNavigationBar: false,
+    }
+  },
   getHomeRoute() {
     return {
       renderScene(navigator) {

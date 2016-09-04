@@ -129,6 +129,10 @@ Routes.schema = new SimpleSchema({
         type: String,
         optional: true
     },
+    direction: {
+        type: String,
+        optional: true
+    },
     url: {
         type: String,
         optional: true
@@ -169,7 +173,8 @@ Routes.schema = new SimpleSchema({
     'timetable.$.weekday': {
         type: Number, // Time only
         min: 1,
-        max: 7
+        max: 7,
+        optional: true
     },
     'timetable.$.stopList':{
         type: [Object],
@@ -184,7 +189,12 @@ Routes.schema = new SimpleSchema({
     'timetable.$.stopList.$.stopName': {
         type: String // Duplicate for simplicity
     },
-
+    'timetable.$.stopList.$.embarkingAllowed': {
+        type: Boolean
+    },
+    'timetable.$.stopList.$.disembarkingAllowed': {
+        type: Boolean
+    },
     'timetable.$.stopList.$.time': {
         type: Date, // Time only
         optional: true
@@ -244,12 +254,6 @@ Stops.schema = new SimpleSchema({
     },
     name: {
         type: String
-    },
-    embarkingAllowed: {
-        type: Boolean
-    },
-    disembarkingAllowed: {
-        type: Boolean
     },
     geometry: {
         type: Object
