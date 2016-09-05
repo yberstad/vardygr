@@ -18,14 +18,10 @@ class DetailsContainer extends Component {
   }
   
   componentWillMount() {
-    this.tryFindNearStop().then((error, stop) => {
-      if (error) {
-        console.log(error);
-      }
+    this.tryFindNearStop().then(stop => {
       if (stop) {
         this.setState({selectedStop: stop});
-        let stopId = stop.stopId;
-        Meteor.call('getRoutListByStopId', {stopId}, (err, result1) => {
+        Meteor.call('getRoutListByStopId', {stopId: stop.stopId}, (err, result1) => {
           if (err) {
             console.log(err);
           }
@@ -48,6 +44,8 @@ class DetailsContainer extends Component {
           }
         });
       }
+    }).catch(error => {
+      console.log(error);
     });
   }
   

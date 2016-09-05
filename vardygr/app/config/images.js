@@ -8,6 +8,7 @@ const images = {
   },
   profileHeader: require('../images/header-image.png'),
   avatarPlaceholder: require('../images/avatar-placeholder.png'),
+  arrowRight: require('../images/arrow-right.png')
 };
 
 export default images;
