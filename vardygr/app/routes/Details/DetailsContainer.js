@@ -55,8 +55,8 @@ class DetailsContainer extends Component {
   
   tryFindNearStop() {
     return new Promise((resolve, reject) => {
-      getCurrentPosition().then((location) => {
-        Meteor.call('findNearStop', {location}, (err, result) => {
+      getCurrentPosition().then((geometry) => {
+        Meteor.call('findNearStop', {location : geometry}, (err, result) => {
           if (err) {
             reject(err);
           }

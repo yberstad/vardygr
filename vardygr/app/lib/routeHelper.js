@@ -27,7 +27,9 @@ export function getTimetableListForStopId(route, stopId, weekday) {
               stopId: stopId,
               time: stop.time,
               estimatedArrivalInMin: null,
-              estimatedArrivalInMeters: null,
+              estimatedArrivalInHours: null,
+              estimatedDistance: null,
+              estimatedDistanceUnit: null,
             });
           }
         });

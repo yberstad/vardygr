@@ -73,9 +73,8 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  'findNearStop': function(params) {
-    const location = params.location;
-    if (!location) {
+  'findNearStop': function({geometry}) {
+    if (!geometry) {
       throw new Meteor.Error("400:bad request");
     }
     
@@ -84,8 +83,8 @@ Meteor.methods({
         {
           geometry: {
             $near: {
-              $geometry: location,
-              $maxDistance: 500
+              $geometry: geometry,
+              $maxDistance: 1000
             }
           }
         });
@@ -97,12 +96,12 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  'searchStopsByRegex': function({stopIdList}) {
+  'searchStopsByRegex': function({searchString}) {
     new SimpleSchema({
-      stopIdList: {
-        type: [String]
+      searchString: {
+        type: String
       }
-    }).validate({stopIdList});
+    }).validate({searchString});
     
     try {
       return Stops.find({name: {$regex: ".*" + searchString + ".*" , $options: 'i'}}, {limit: 20}).fetch();

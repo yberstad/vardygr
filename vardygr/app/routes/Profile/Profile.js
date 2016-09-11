@@ -25,7 +25,7 @@ const Profile = (props) => {
         <LoginButton
             onLogoutFinished={signOut} />
         <Button
-            text="Create Test Data (only press once)"
+            text="Create Test Data (do not press)"
             onPress={onInsertTestDataPress}
         />
         <Button

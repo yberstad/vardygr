@@ -4,7 +4,7 @@ export const colors = {
   headerText: '#444444',
   labelText: '#3DA5C1',
   importantText: '#E46C0A',
-  buttonBackground: '#39BD98',
+  buttonBackground: '#3DA5C1',
   buttonText: '#FFFFFF',
   inputBackground: '#FFFFFF',
   inputDivider: '#E4E2E5',

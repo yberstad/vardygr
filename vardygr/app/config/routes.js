@@ -4,6 +4,7 @@ import Details from '../routes/Details';
 import Profile from '../routes/Profile';
 import SignIn from '../routes/SignIn';
 import RouteTracker from '../routes/RouteTracker';
+import RouteSearch from '../routes/RouteSearch';
 
 export const routes = {
   getRouteTrackerRoute(route, stop){
@@ -34,6 +35,17 @@ export const routes = {
 
       getTitle() {
         return 'Details';
+      },
+    };
+  },
+  getRouteSearchRoute() {
+    return {
+      renderScene(navigator) {
+        return <RouteSearch navigator={navigator} />;
+      },
+      
+      getTitle() {
+        return 'Search For Stops';
       },
     };
   },

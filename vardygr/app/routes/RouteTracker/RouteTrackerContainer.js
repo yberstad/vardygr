@@ -67,7 +67,7 @@ class RouteTrackerContainer extends Component {
     });
     
     // Find the distance/duration.
-    var url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destination}&key=AIzaSyCRb0RF6LvmZNg9iTUwcQOOTntME8nE2jc`
+    var url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destination}&mode=walking&key=AIzaSyCRb0RF6LvmZNg9iTUwcQOOTntME8nE2jc`
     return fetch(url)
       .then((response) => response.json())
       .then((responseJson) => {
@@ -75,11 +75,22 @@ class RouteTrackerContainer extends Component {
         responseJson.rows.map(item => {
           let element = item.elements[0];
           if(element && element.status === 'OK') {
-            arrivalList[counter].estimatedArrivalInMeters = getFirstWord(element.distance.text);
-            arrivalList[counter].estimatedArrivalInMin = getFirstWord(element.duration.text);
+            var distance = element.distance.text.split(" ");
+            var duration = element.duration.text.split(" ");
+            arrivalList[counter].estimatedDistance = distance[0];
+            arrivalList[counter].estimatedDistanceUnit = distance[1];
+            if(duration.length == 2)
+            {
+              arrivalList[counter].estimatedArrivalInHours = null;
+              arrivalList[counter].estimatedArrivalInMin = duration[0];
+            }
+            else if(duration.length == 4){
+              arrivalList[counter].estimatedArrivalInHours = duration[0];
+              arrivalList[counter].estimatedArrivalInMin = duration[2];
+            }
           }
           else {
-            arrivalList[counter].estimatedArrivalInMeters = '-';
+            arrivalList[counter].estimatedDistance = '-';
             arrivalList[counter].estimatedArrivalInMin = '-';
           }
           counter++;

@@ -88,12 +88,24 @@ const RouteTracker = ({
           <View style={styles.innerContainer}>
             <Text style={styles.label}>First arrival</Text>
             {(() => {
+              if(firstArrival && firstArrival.estimatedArrivalInHours) {
+                return (
+                  <View style={styles.minutesContainer}>
+                    <Text style={styles.textXlargeImportant}>
+                      {firstArrival.estimatedArrivalInHours}
+                      <Text style={styles.textXsmallImportant}>hours</Text>
+                      {firstArrival.estimatedArrivalInMin}
+                      <Text style={styles.textXsmallImportant}>min ({firstArrival.estimatedDistance} {firstArrival.estimatedDistanceUnit})</Text>
+                    </Text>
+                  </View>
+                )
+              }
               if(firstArrival && firstArrival.estimatedArrivalInMin) {
                 return (
                   <View style={styles.minutesContainer}>
                     <Text style={styles.textXlargeImportant}>
                       {firstArrival.estimatedArrivalInMin}
-                      <Text style={styles.textXsmallImportant}>min</Text>
+                      <Text style={styles.textXsmallImportant}>min ({firstArrival.estimatedDistance} {firstArrival.estimatedDistanceUnit})</Text>
                     </Text>
                   </View>
                 )
